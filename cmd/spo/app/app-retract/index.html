@@ -32,7 +32,7 @@
     
     
       
-        <title>app list - Office 365 CLI</title>
+        <title>app retract - Office 365 CLI</title>
       
     
     
@@ -100,7 +100,7 @@
                 </span>
               
             
-            app list
+            app retract
           
         </span>
       </div>
@@ -421,6 +421,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../app-list/" title="app list" class="md-nav__link">
+      app list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -432,11 +444,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        app list
+        app retract
       </label>
     
-    <a href="./" title="app list" class="md-nav__link md-nav__link--active">
-      app list
+    <a href="./" title="app retract" class="md-nav__link md-nav__link--active">
+      app retract
     </a>
     
       
@@ -490,18 +502,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../app-retract/" title="app retract" class="md-nav__link">
-      app retract
-    </a>
   </li>
 
         
@@ -853,13 +853,13 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="http://github.com/SharePoint/office365-cli/blob/master/docs/manual/docs/cmd/spo/app/app-list.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="http://github.com/SharePoint/office365-cli/blob/master/docs/manual/docs/cmd/spo/app/app-retract.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="spo-app-list">spo app list<a class="headerlink" href="#spo-app-list" title="Permanent link">&para;</a></h1>
-<p>Lists apps from the tenant app catalog</p>
+                <h1 id="spo-app-retract">spo app retract<a class="headerlink" href="#spo-app-retract" title="Permanent link">&para;</a></h1>
+<p>Retracts the specified app from the tenant app catalog</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>spo app list <span class="o">[</span>options<span class="o">]</span>
+<div class="codehilite"><pre><span></span>spo app retract <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 
 
@@ -877,6 +877,18 @@
 <td>output usage information</td>
 </tr>
 <tr>
+<td><code>-i, --id &lt;id&gt;</code></td>
+<td>ID of the app to retract. Needs to be available in the tenant app catalog.</td>
+</tr>
+<tr>
+<td><code>-u, --appCatalogUrl [appCatalogUrl]</code></td>
+<td>(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically</td>
+</tr>
+<tr>
+<td><code>--confirm</code></td>
+<td>Don't prompt for confirming retracting the app from the tenant app catalog</td>
+</tr>
+<tr>
 <td><code>--verbose</code></td>
 <td>Runs command with verbose logging</td>
 </tr>
@@ -887,14 +899,25 @@
 <p>Before using this command, connect to a SharePoint Online site, using the <a href="../../connect/">spo connect</a> command.</p>
 </div>
 <h2 id="remarks">Remarks<a class="headerlink" href="#remarks" title="Permanent link">&para;</a></h2>
-<p>To list the apps available in the tenant app catalog, you have to first connect to a SharePoint site using the
-<a href="../../connect/">spo connect</a> command, eg. <code>spo connect https://contoso.sharepoint.com</code>.</p>
+<p>To retract an app from the tenant app catalog, you have to first connect to a SharePoint site using the <a href="../../connect/">spo connect</a> command, eg. <code>spo connect https://contoso.sharepoint.com</code>.</p>
+<p>If you don't specify the URL of the tenant app catalog site using the <strong>appCatalogUrl</strong> option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.</p>
+<p>If the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>spo app list
+<div class="codehilite"><pre><span></span>spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3
 </pre></div>
 
 
-<p>lists all apps available in the tenant app catalog</p>
+<p>Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.</p>
+<div class="codehilite"><pre><span></span>spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps
+</pre></div>
+
+
+<p>Retracts the specified app from the tenant app catalog located at <em>https://contoso.sharepoint.com/sites/apps</em>. Additionally, will prompt for confirmation before actually retracting the app.</p>
+<div class="codehilite"><pre><span></span>spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm
+</pre></div>
+
+
+<p>Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.</p>
 <h2 id="more-information">More information<a class="headerlink" href="#more-information" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Application Lifecycle Management (ALM) APIs: <a href="https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins">https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins</a></li>
@@ -917,7 +940,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../app-install/" title="app install" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../app-list/" title="app list" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -926,19 +949,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                app install
+                app list
               </span>
             </div>
           </a>
         
         
-          <a href="../app-retract/" title="app retract" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../app-uninstall/" title="app uninstall" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                app retract
+                app uninstall
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

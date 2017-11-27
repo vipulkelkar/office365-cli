@@ -116,6 +116,146 @@
             "title": "Examples"
         }, 
         {
+            "location": "/cmd/spo/app/app-add/", 
+            "text": "spo app add\n\n\nAdds an app to the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo app add \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-p, --filePath \nfilePath\n\n\nAbsolute or relative path to the solution package file to add to the app catalog\n\n\n\n\n\n\n--overwrite\n\n\nSet to overwrite the existing package file\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo add an app to the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nWhen specifying the path to the app package file you can use both relative and absolute paths. Note, that \n~\n in the path, will not be resolved and will most likely result in an error.\n\n\nIf you try to upload a package that already exists in the tenant app catalog without specifying the \n--overwrite\n option, the command will fail with an error stating that the specified package already exists.\n\n\nExamples\n\n\nspo app add -p /Users/pnp/spfx/sharepoint/solution/spfx.sppkg\n\n\n\n\n\nAdds package spfx.sppkg to the tenant app catalog\n\n\nspo app add -p sharepoint/solution/spfx.sppkg --overwrite\n\n\n\n\n\nOverwrites the package spfx.sppkg in the tenant app catalog with the newer version\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app add"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-add/#spo-app-add", 
+            "text": "Adds an app to the specified SharePoint Online app catalog", 
+            "title": "spo app add"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-add/#usage", 
+            "text": "spo app add  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-add/#options", 
+            "text": "Option  Description      --help  output usage information    -p, --filePath  filePath  Absolute or relative path to the solution package file to add to the app catalog    --overwrite  Set to overwrite the existing package file    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-add/#remarks", 
+            "text": "To add an app to the tenant app catalog, you have to first connect to a SharePoint site using the spo connect  command, eg.  spo connect https://contoso.sharepoint.com .  When specifying the path to the app package file you can use both relative and absolute paths. Note, that  ~  in the path, will not be resolved and will most likely result in an error.  If you try to upload a package that already exists in the tenant app catalog without specifying the  --overwrite  option, the command will fail with an error stating that the specified package already exists.", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-add/#examples", 
+            "text": "spo app add -p /Users/pnp/spfx/sharepoint/solution/spfx.sppkg  Adds package spfx.sppkg to the tenant app catalog  spo app add -p sharepoint/solution/spfx.sppkg --overwrite  Overwrites the package spfx.sppkg in the tenant app catalog with the newer version", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-add/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/", 
+            "text": "spo app deploy\n\n\nDeploys the specified app in the tenant app catalog\n\n\nUsage\n\n\nspo app deploy \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to deploy. Needs to be available in the tenant app catalog.\n\n\n\n\n\n\n-u, --appCatalogUrl [appCatalogUrl]\n\n\n(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo deploy an app in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf you don't specify the URL of the tenant app catalog site using the \nappCatalogUrl\n option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can deploy an app, you have to add it to the tenant app catalog first using the \nspo app add\n command.\n\n\nExamples\n\n\nspo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3\n\n\n\n\n\nDeploys the specified app in the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically.\n\n\nspo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps\n\n\n\n\n\nDeploys the specified app in the tenant app catalog located at \nhttps://contoso.sharepoint.com/sites/apps\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app deploy"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/#spo-app-deploy", 
+            "text": "Deploys the specified app in the tenant app catalog", 
+            "title": "spo app deploy"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/#usage", 
+            "text": "spo app deploy  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to deploy. Needs to be available in the tenant app catalog.    -u, --appCatalogUrl [appCatalogUrl]  (optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/#remarks", 
+            "text": "To deploy an app in the tenant app catalog, you have to first connect to a SharePoint site using the spo connect  command, eg.  spo connect https://contoso.sharepoint.com .  If you don't specify the URL of the tenant app catalog site using the  appCatalogUrl  option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.  If the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can deploy an app, you have to add it to the tenant app catalog first using the  spo app add  command.", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/#examples", 
+            "text": "spo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3  Deploys the specified app in the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically.  spo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps  Deploys the specified app in the tenant app catalog located at  https://contoso.sharepoint.com/sites/apps", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-deploy/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/", 
+            "text": "spo app get\n\n\nGets information about the specific app from the tenant app catalog\n\n\nUsage\n\n\nspo app get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo get information about the specified app available in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app get -i b2307a39-e878-458b-bc90-03bc578531d6\n\n\n\n\n\nReturns details about the app with ID 'b2307a39-e878-458b-bc90-03bc578531d6' available in the tenant app catalog.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app get"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/#spo-app-get", 
+            "text": "Gets information about the specific app from the tenant app catalog", 
+            "title": "spo app get"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/#usage", 
+            "text": "spo app get  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/#remarks", 
+            "text": "To get information about the specified app available in the tenant app catalog, you have to first connect to a SharePoint site using the spo connect  command, eg.  spo connect https://contoso.sharepoint.com .", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/#examples", 
+            "text": "spo app get -i b2307a39-e878-458b-bc90-03bc578531d6  Returns details about the app with ID 'b2307a39-e878-458b-bc90-03bc578531d6' available in the tenant app catalog.", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-get/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/", 
+            "text": "spo app install\n\n\nInstalls an app from the tenant app catalog in the site\n\n\nUsage\n\n\nspo app install \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to install the app in\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo install an app from the tenant app catalog in a site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can install app in a site, you have to add it to the tenant app catalog first using the \nspo app add\n command.\n\n\nExamples\n\n\nspo app install -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nInstalls the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n in the \nhttps://contoso.sharepoint.com\n site.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app install"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/#spo-app-install", 
+            "text": "Installs an app from the tenant app catalog in the site", 
+            "title": "spo app install"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/#usage", 
+            "text": "spo app install  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to install the app in    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/#remarks", 
+            "text": "To install an app from the tenant app catalog in a site, you have to first connect to a SharePoint site using the  spo connect  command, eg.  spo connect https://contoso.sharepoint.com .  If the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can install app in a site, you have to add it to the tenant app catalog first using the  spo app add  command.", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/#examples", 
+            "text": "spo app install -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Installs the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  in the  https://contoso.sharepoint.com  site.", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-install/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
             "location": "/cmd/spo/app/app-list/", 
             "text": "spo app list\n\n\nLists apps from the tenant app catalog\n\n\nUsage\n\n\nspo app list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list the apps available in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app list\n\n\n\n\n\nlists all apps available in the tenant app catalog\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app list"
@@ -147,6 +287,111 @@
         }, 
         {
             "location": "/cmd/spo/app/app-list/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/", 
+            "text": "spo app retract\n\n\nRetracts the specified app from the tenant app catalog\n\n\nUsage\n\n\nspo app retract \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retract. Needs to be available in the tenant app catalog.\n\n\n\n\n\n\n-u, --appCatalogUrl [appCatalogUrl]\n\n\n(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming retracting the app from the tenant app catalog\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo retract an app from the tenant app catalog, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf you don't specify the URL of the tenant app catalog site using the \nappCatalogUrl\n option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error.\n\n\nExamples\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3\n\n\n\n\n\nRetracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps\n\n\n\n\n\nRetracts the specified app from the tenant app catalog located at \nhttps://contoso.sharepoint.com/sites/apps\n. Additionally, will prompt for confirmation before actually retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm\n\n\n\n\n\nRetracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app retract"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/#spo-app-retract", 
+            "text": "Retracts the specified app from the tenant app catalog", 
+            "title": "spo app retract"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/#usage", 
+            "text": "spo app retract  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retract. Needs to be available in the tenant app catalog.    -u, --appCatalogUrl [appCatalogUrl]  (optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically    --confirm  Don't prompt for confirming retracting the app from the tenant app catalog    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/#remarks", 
+            "text": "To retract an app from the tenant app catalog, you have to first connect to a SharePoint site using the  spo connect  command, eg.  spo connect https://contoso.sharepoint.com .  If you don't specify the URL of the tenant app catalog site using the  appCatalogUrl  option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.  If the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error.", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/#examples", 
+            "text": "spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3  Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps  Retracts the specified app from the tenant app catalog located at  https://contoso.sharepoint.com/sites/apps . Additionally, will prompt for confirmation before actually retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm  Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-retract/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/", 
+            "text": "spo app uninstall\n\n\nUninstalls an app from the site\n\n\nUsage\n\n\nspo app uninstall \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to uninstall the app from\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming uninstalling the app\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo uninstall an app from the site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUninstalls the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n from the \nhttps://contoso.sharepoint.com\n site.\n\n\nspo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUninstalls the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n from the \nhttps://contoso.sharepoint.com\n site without prompting for confirmation.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app uninstall"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/#spo-app-uninstall", 
+            "text": "Uninstalls an app from the site", 
+            "title": "spo app uninstall"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/#usage", 
+            "text": "spo app uninstall  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to uninstall the app from    --confirm  Don't prompt for confirming uninstalling the app    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/#remarks", 
+            "text": "To uninstall an app from the site, you have to first connect to a SharePoint site using the  spo connect  command, eg.  spo connect https://contoso.sharepoint.com .", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/#examples", 
+            "text": "spo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Uninstalls the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  from the  https://contoso.sharepoint.com  site.  spo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Uninstalls the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  from the  https://contoso.sharepoint.com  site without prompting for confirmation.", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-uninstall/#more-information", 
+            "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "More information"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/", 
+            "text": "spo app upgrade\n\n\nUpgrades app in the specified site\n\n\nUsage\n\n\nspo app upgrade \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to install the app in\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo upgrade an app in the site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app upgrade -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUpgrades the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n in the \nhttps://contoso.sharepoint.com\n site.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "title": "app upgrade"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/#spo-app-upgrade", 
+            "text": "Upgrades app in the specified site", 
+            "title": "spo app upgrade"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/#usage", 
+            "text": "spo app upgrade  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to install the app in    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/#remarks", 
+            "text": "To upgrade an app in the site, you have to first connect to a SharePoint site using the  spo connect  command, eg.  spo connect https://contoso.sharepoint.com .", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/#examples", 
+            "text": "spo app upgrade -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Upgrades the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  in the  https://contoso.sharepoint.com  site.", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/app/app-upgrade/#more-information", 
             "text": "Application Lifecycle Management (ALM) APIs:  https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "More information"
         }, 
@@ -547,13 +792,18 @@
         }, 
         {
             "location": "/about/release-notes/", 
-            "text": "Release notes\n\n\nv0.1.1\n\n\n\n\nFixed bug in resolving command paths on Windows\n\n\n\n\nv0.1.0\n\n\nInitial release.\n\n\nNew commands:\n\n\nSharePoint Online:\n\n\n\n\nspo cdn get\n - get Office 365 CDN status\n\n\nspo cdn origin list\n - list Office 365 CDN origins\n\n\nspo cdn origin remove\n - remove Office 365 CDN origin\n\n\nspo cdn origin set\n - set Office 365 CDN origin\n\n\nspo cdn policy list\n - list Office 365 CDN policies\n\n\nspo cdn policy set\n - set Office 365 CDN policy\n\n\nspo cdn set\n - enable/disable Office 365 CDN\n\n\nspo connect\n - connect to a SharePoint Online site\n\n\nspo disconnect\n - disconnect from SharePoint\n\n\nspo status\n - show SharePoint Online connection status\n\n\nspo storageentity get\n - get value of a tenant property\n\n\nspo storageentity list\n - list all tenant properties\n\n\nspo storageentity remove\n - remove a tenant property\n\n\nspo storageentity set\n - set a tenant property", 
+            "text": "Release notes\n\n\nv0.2.0\n\n\nNew commands:\n\n\nSharePoint Online:\n\n\n\n\nspo app add\n - add an app to the specified SharePoint Online app catalog\n\n\nspo app deploy\n - deploy the specified app in the tenant app catalog\n\n\nspo app get\n - get information about the specific app from the tenant app catalog\n\n\nspo app install\n - install an app from the tenant app catalog in the site\n\n\nspo app list\n - list apps from the tenant app catalog\n\n\nspo app retract\n - retract the specified app from the tenant app catalog\n\n\nspo app uninstall\n - uninstall an app from the site\n\n\nspo app upgrade\n - upgrade app in the specified site\n\n\n\n\nv0.1.1\n\n\n\n\nFixed bug in resolving command paths on Windows\n\n\n\n\nv0.1.0\n\n\nInitial release.\n\n\nNew commands:\n\n\nSharePoint Online:\n\n\n\n\nspo cdn get\n - get Office 365 CDN status\n\n\nspo cdn origin list\n - list Office 365 CDN origins\n\n\nspo cdn origin remove\n - remove Office 365 CDN origin\n\n\nspo cdn origin set\n - set Office 365 CDN origin\n\n\nspo cdn policy list\n - list Office 365 CDN policies\n\n\nspo cdn policy set\n - set Office 365 CDN policy\n\n\nspo cdn set\n - enable/disable Office 365 CDN\n\n\nspo connect\n - connect to a SharePoint Online site\n\n\nspo disconnect\n - disconnect from SharePoint\n\n\nspo status\n - show SharePoint Online connection status\n\n\nspo storageentity get\n - get value of a tenant property\n\n\nspo storageentity list\n - list all tenant properties\n\n\nspo storageentity remove\n - remove a tenant property\n\n\nspo storageentity set\n - set a tenant property", 
             "title": "Release notes"
         }, 
         {
             "location": "/about/release-notes/#release-notes", 
             "text": "", 
             "title": "Release notes"
+        }, 
+        {
+            "location": "/about/release-notes/#v020", 
+            "text": "New commands:  SharePoint Online:   spo app add  - add an app to the specified SharePoint Online app catalog  spo app deploy  - deploy the specified app in the tenant app catalog  spo app get  - get information about the specific app from the tenant app catalog  spo app install  - install an app from the tenant app catalog in the site  spo app list  - list apps from the tenant app catalog  spo app retract  - retract the specified app from the tenant app catalog  spo app uninstall  - uninstall an app from the site  spo app upgrade  - upgrade app in the specified site", 
+            "title": "v0.2.0"
         }, 
         {
             "location": "/about/release-notes/#v011", 
