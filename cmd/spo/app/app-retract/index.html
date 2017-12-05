@@ -28,7 +28,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.4">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.2.1">
     
     
       
@@ -36,13 +36,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application-709eec9410.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.41c6761c.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.792431c1.css">
       
     
     
-      <script src="../../../../assets/javascripts/modernizr-e826f8942a.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
@@ -87,22 +87,18 @@
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  SharePoint Online (spo)
-                </span>
-              
-                <span class="md-header-nav__parent">
-                  app
-                </span>
-              
+              <span class="md-header-nav__topic">
+                Office 365 CLI
+              </span>
+              <span class="md-header-nav__topic">
+                app retract
+              </span>
             
-            app retract
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
@@ -162,6 +158,9 @@
 </header>
     
     <div class="md-container">
+      
+        
+      
       
         
 
@@ -652,10 +651,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-6" type="checkbox" id="nav-2-1-6">
     
     <label class="md-nav__link" for="nav-2-1-6">
-      storageentity
+      customaction
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-6">
+        customaction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../customaction/customaction-get/" title="customaction get" class="md-nav__link">
+      customaction get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-7" type="checkbox" id="nav-2-1-7">
+    
+    <label class="md-nav__link" for="nav-2-1-7">
+      storageentity
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-7">
         storageentity
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -889,8 +924,16 @@
 <td>Don't prompt for confirming retracting the app from the tenant app catalog</td>
 </tr>
 <tr>
+<td><code>-o, --output &lt;output&gt;</code></td>
+<td>Output type. <code>json|text</code>. Default <code>text</code></td>
+</tr>
+<tr>
 <td><code>--verbose</code></td>
 <td>Runs command with verbose logging</td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td>Runs command with debug logging</td>
 </tr>
 </tbody>
 </table>
@@ -903,21 +946,21 @@
 <p>If you don't specify the URL of the tenant app catalog site using the <strong>appCatalogUrl</strong> option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.</p>
 <p>If the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>Retract the specified app from the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.</p>
 <div class="codehilite"><pre><span></span>spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3
 </pre></div>
 
 
-<p>Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.</p>
+<p>Retract the specified app from the tenant app catalog located at <em>https://contoso.sharepoint.com/sites/apps</em>. Additionally, will prompt for confirmation before actually retracting the app.</p>
 <div class="codehilite"><pre><span></span>spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps
 </pre></div>
 
 
-<p>Retracts the specified app from the tenant app catalog located at <em>https://contoso.sharepoint.com/sites/apps</em>. Additionally, will prompt for confirmation before actually retracting the app.</p>
+<p>Retract the specified app from the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.</p>
 <div class="codehilite"><pre><span></span>spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm
 </pre></div>
 
 
-<p>Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.</p>
 <h2 id="more-information">More information<a class="headerlink" href="#more-information" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Application Lifecycle Management (ALM) APIs: <a href="https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins">https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins</a></li>
@@ -977,9 +1020,9 @@
       <div class="md-footer-copyright">
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="http://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
@@ -991,12 +1034,14 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/application-8e4952e681.js"></script>
+      <script src="../../../../assets/javascripts/application.6cdc17f0.js"></script>
       
       <script>app.initialize({version:"0.17.2",url:{base:"../../../.."}})</script>
       
     
     
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-110480857-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
       
     
   </body>

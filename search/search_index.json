@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Office 365 CLI\n\n\nThe Office 365 CLI allows you to manage different settings of your Microsoft Office 365 tenant on any platform.\n\n\n\n\n\nInstallation\n\n\nThe Office 365 CLI is distributed as an NPM package. To use it, install it globally using:\n\n\nnpm i -g @pnp/office365-cli\n\n\n\n\n\nor using yarn:\n\n\nyarn global add @pnp/office365-cli\n\n\n\n\n\nThe beta version of the Office 365 CLI can be installed by using the \n@next\n tag:\n\n\nnpm i -g @pnp/office365-cli@next\n\n\n\n\n\nGetting started\n\n\nStart the Office 365 CLI by typing in the command line:\n\n\n$ office365\n\no365$ _\n\n\n\n\n\nRunning the \noffice365\n command will start the immersive CLI with its own command prompt.\n\n\nStart managing the settings of your Office 365 tenant by connecting to it, using the \nspo connect \nurl\n site, for example:\n\n\no365$ spo connect https://contoso-admin.sharepoint.com\n\n\n\n\n\n\n\nDepending on which settings you want to manage you might need to connect either to your tenant admin site (URL with \n-admin\n) in it, or to a regular SharePoint site. For more information refer to the help of the command you want to use.\n\n\n\n\nTo list all available commands, type in the Office 365 CLI prompt \nhelp\n:\n\n\no365$ \nhelp\n\n\n\n\n\n\nTo exit the CLI, type \nexit\n:\n\n\no365$ \nexit", 
+            "text": "Office 365 CLI\n\n\nThe Office 365 CLI allows you to manage different settings of your Microsoft Office 365 tenant on any platform.\n\n\n\n\n\nInstallation\n\n\nThe Office 365 CLI is distributed as an NPM package. To use it, install it globally using:\n\n\nnpm i -g @pnp/office365-cli\n\n\n\n\n\nor using yarn:\n\n\nyarn global add @pnp/office365-cli\n\n\n\n\n\nThe beta version of the Office 365 CLI can be installed by using the \n@next\n tag:\n\n\nnpm i -g @pnp/office365-cli@next\n\n\n\n\n\nGetting started\n\n\nStart the Office 365 CLI by typing in the command line:\n\n\n$ office365\n\no365$ _\n\n\n\n\n\nRunning the \noffice365\n command will start the immersive CLI with its own command prompt.\n\n\nStart managing the settings of your Office 365 tenant by connecting to it, using the \nspo connect \nurl\n site, for example:\n\n\no365$ spo connect https://contoso-admin.sharepoint.com\n\n\n\n\n\n\n\nDepending on which settings you want to manage you might need to connect either to your tenant admin site (URL with \n-admin\n in it), or to a regular SharePoint site. For more information refer to the help of the command you want to use.\n\n\n\n\nTo list all available commands, type in the Office 365 CLI prompt \nhelp\n:\n\n\no365$ \nhelp\n\n\n\n\n\n\nTo exit the CLI, type \nexit\n:\n\n\no365$ \nexit", 
             "title": "Home"
         }, 
         {
@@ -17,12 +17,12 @@
         }, 
         {
             "location": "/#getting-started", 
-            "text": "Start the Office 365 CLI by typing in the command line:  $ office365\n\no365$ _  Running the  office365  command will start the immersive CLI with its own command prompt.  Start managing the settings of your Office 365 tenant by connecting to it, using the  spo connect  url  site, for example:  o365$ spo connect https://contoso-admin.sharepoint.com   Depending on which settings you want to manage you might need to connect either to your tenant admin site (URL with  -admin ) in it, or to a regular SharePoint site. For more information refer to the help of the command you want to use.   To list all available commands, type in the Office 365 CLI prompt  help :  o365$  help   To exit the CLI, type  exit :  o365$  exit", 
+            "text": "Start the Office 365 CLI by typing in the command line:  $ office365\n\no365$ _  Running the  office365  command will start the immersive CLI with its own command prompt.  Start managing the settings of your Office 365 tenant by connecting to it, using the  spo connect  url  site, for example:  o365$ spo connect https://contoso-admin.sharepoint.com   Depending on which settings you want to manage you might need to connect either to your tenant admin site (URL with  -admin  in it), or to a regular SharePoint site. For more information refer to the help of the command you want to use.   To list all available commands, type in the Office 365 CLI prompt  help :  o365$  help   To exit the CLI, type  exit :  o365$  exit", 
             "title": "Getting started"
         }, 
         {
             "location": "/cmd/spo/connect/", 
-            "text": "spo connect\n\n\nConnects to a SharePoint Online site\n\n\nUsage\n\n\nspo connect \n[\noptions\n]\n \nurl\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\nArguments\n\n\n\n\n\n\n\n\nArgument\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nurl\n\n\nabsolute URL of the SharePoint Online site to connect to\n\n\n\n\n\n\n\n\nRemarks\n\n\nUsing the \nspo connect\n command, you can connect to any SharePoint Online site.\nDepending on the command you want to use, you might be required to connect\nto a SharePoint Online tenant admin site (suffixed with \n-admin\n,\neg. \nhttps://contoso-admin.sharepoint.com\n) or a regular site.\n\n\nThe \nspo connect\n command uses device code OAuth flow with the standard\nMicrosoft SharePoint Online Management Shell Azure AD application to connect\nto SharePoint Online.\n\n\nWhen connecting to a SharePoint site, the \nspo connect\n command stores in memory\nthe access token and the refresh token for the specified site. Both tokens are cleared from memory\nafter exiting the CLI or by calling the \nspo disconnect\n command.\n\n\nExamples\n\n\nspo connect https://contoso-admin.sharepoint.com\n\n\n\n\n\nconnects to a SharePoint Online tenant admin site\n\n\nspo connect --verbose https://contoso-admin.sharepoint.com\n\n\n\n\n\nconnects to a SharePoint Online tenant admin site in verbose mode including detailed debug information in the console output\n\n\nspo connect https://contoso.sharepoint.com/sites/team\n\n\n\n\n\nconnects to a regular SharePoint Online site", 
+            "text": "spo connect\n\n\nConnects to a SharePoint Online site\n\n\nUsage\n\n\nspo connect \n[\noptions\n]\n \nurl\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\nArguments\n\n\n\n\n\n\n\n\nArgument\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nurl\n\n\nabsolute URL of the SharePoint Online site to connect to\n\n\n\n\n\n\n\n\nRemarks\n\n\nUsing the \nspo connect\n command, you can connect to any SharePoint Online site.\nDepending on the command you want to use, you might be required to connect\nto a SharePoint Online tenant admin site (suffixed with \n-admin\n,\neg. \nhttps://contoso-admin.sharepoint.com\n) or a regular site.\n\n\nThe \nspo connect\n command uses device code OAuth flow with the standard\nMicrosoft SharePoint Online Management Shell Azure AD application to connect\nto SharePoint Online.\n\n\nWhen connecting to a SharePoint site, the \nspo connect\n command stores in memory\nthe access token and the refresh token for the specified site. Both tokens are cleared from memory\nafter exiting the CLI or by calling the \nspo disconnect\n command.\n\n\nExamples\n\n\nConnects to a SharePoint Online tenant admin site\n\n\nspo connect https://contoso-admin.sharepoint.com\n\n\n\n\n\nConnect to a SharePoint Online tenant admin site in debug mode including detailed debug information in the console output\n\n\nspo connect --debug https://contoso-admin.sharepoint.com\n\n\n\n\n\nConnect to a regular SharePoint Online site\n\n\nspo connect https://contoso.sharepoint.com/sites/team", 
             "title": "connect"
         }, 
         {
@@ -37,7 +37,7 @@
         }, 
         {
             "location": "/cmd/spo/connect/#options", 
-            "text": "Option  Description      --help  output usage information    --verbose  Runs command with verbose logging", 
+            "text": "Option  Description      --help  output usage information    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging", 
             "title": "Options"
         }, 
         {
@@ -52,12 +52,12 @@
         }, 
         {
             "location": "/cmd/spo/connect/#examples", 
-            "text": "spo connect https://contoso-admin.sharepoint.com  connects to a SharePoint Online tenant admin site  spo connect --verbose https://contoso-admin.sharepoint.com  connects to a SharePoint Online tenant admin site in verbose mode including detailed debug information in the console output  spo connect https://contoso.sharepoint.com/sites/team  connects to a regular SharePoint Online site", 
+            "text": "Connects to a SharePoint Online tenant admin site  spo connect https://contoso-admin.sharepoint.com  Connect to a SharePoint Online tenant admin site in debug mode including detailed debug information in the console output  spo connect --debug https://contoso-admin.sharepoint.com  Connect to a regular SharePoint Online site  spo connect https://contoso.sharepoint.com/sites/team", 
             "title": "Examples"
         }, 
         {
             "location": "/cmd/spo/disconnect/", 
-            "text": "spo disconnect\n\n\nDisconnects from a previously connected SharePoint Online site\n\n\nUsage\n\n\nspo disconnect \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\nRemarks\n\n\nThe spo disconnect command disconnects from the previously connected SharePoint Online site and removes any access and refresh tokens from memory.\n\n\nExamples\n\n\nspo disconnect\n\n\n\n\n\ndisconnects from a previously connected SharePoint Online site\n\n\nspo disconnect --verbose\n\n\n\n\n\ndisconnects from a previously connected SharePoint Online site in verbose mode including detailed debug information in the console output", 
+            "text": "spo disconnect\n\n\nDisconnects from a previously connected SharePoint Online site\n\n\nUsage\n\n\nspo disconnect \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\nRemarks\n\n\nThe spo disconnect command disconnects from the previously connected SharePoint Online site and removes any access and refresh tokens from memory.\n\n\nExamples\n\n\nDisconnect from a previously connected SharePoint Online site\n\n\nspo disconnect\n\n\n\n\n\nDisconnects from a previously connected SharePoint Online site in debug mode including detailed debug information in the console output\n\n\nspo disconnect --debug", 
             "title": "disconnect"
         }, 
         {
@@ -72,7 +72,7 @@
         }, 
         {
             "location": "/cmd/spo/disconnect/#options", 
-            "text": "Option  Description      --help  output usage information    --verbose  Runs command with verbose logging", 
+            "text": "Option  Description      --help  output usage information    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging", 
             "title": "Options"
         }, 
         {
@@ -82,12 +82,12 @@
         }, 
         {
             "location": "/cmd/spo/disconnect/#examples", 
-            "text": "spo disconnect  disconnects from a previously connected SharePoint Online site  spo disconnect --verbose  disconnects from a previously connected SharePoint Online site in verbose mode including detailed debug information in the console output", 
+            "text": "Disconnect from a previously connected SharePoint Online site  spo disconnect  Disconnects from a previously connected SharePoint Online site in debug mode including detailed debug information in the console output  spo disconnect --debug", 
             "title": "Examples"
         }, 
         {
             "location": "/cmd/spo/status/", 
-            "text": "spo status\n\n\nShows SharePoint Online site connection status\n\n\nUsage\n\n\nspo status \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\nRemarks\n\n\nIf you are connected to a SharePoint Online, the spo status command\nwill show you information about the site to which you are connected, the currently stored\nrefresh and access token and the expiration date and time of the access token.\n\n\nExamples\n\n\nspo status\n\n\n\n\n\nshows the information about the current connection to SharePoint Online", 
+            "text": "spo status\n\n\nShows SharePoint Online site connection status\n\n\nUsage\n\n\nspo status \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\nRemarks\n\n\nIf you are connected to a SharePoint Online, the spo status command\nwill show you information about the site to which you are connected, the currently stored\nrefresh and access token and the expiration date and time of the access token.\n\n\nExamples\n\n\nShow the information about the current connection to SharePoint Online\n\n\nspo status", 
             "title": "status"
         }, 
         {
@@ -102,7 +102,7 @@
         }, 
         {
             "location": "/cmd/spo/status/#options", 
-            "text": "Option  Description      --help  output usage information    --verbose  Runs command with verbose logging", 
+            "text": "Option  Description      --help  output usage information    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging", 
             "title": "Options"
         }, 
         {
@@ -112,12 +112,12 @@
         }, 
         {
             "location": "/cmd/spo/status/#examples", 
-            "text": "spo status  shows the information about the current connection to SharePoint Online", 
+            "text": "Show the information about the current connection to SharePoint Online  spo status", 
             "title": "Examples"
         }, 
         {
             "location": "/cmd/spo/app/app-add/", 
-            "text": "spo app add\n\n\nAdds an app to the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo app add \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-p, --filePath \nfilePath\n\n\nAbsolute or relative path to the solution package file to add to the app catalog\n\n\n\n\n\n\n--overwrite\n\n\nSet to overwrite the existing package file\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo add an app to the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nWhen specifying the path to the app package file you can use both relative and absolute paths. Note, that \n~\n in the path, will not be resolved and will most likely result in an error.\n\n\nIf you try to upload a package that already exists in the tenant app catalog without specifying the \n--overwrite\n option, the command will fail with an error stating that the specified package already exists.\n\n\nExamples\n\n\nspo app add -p /Users/pnp/spfx/sharepoint/solution/spfx.sppkg\n\n\n\n\n\nAdds package spfx.sppkg to the tenant app catalog\n\n\nspo app add -p sharepoint/solution/spfx.sppkg --overwrite\n\n\n\n\n\nOverwrites the package spfx.sppkg in the tenant app catalog with the newer version\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app add\n\n\nAdds an app to the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo app add \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-p, --filePath \nfilePath\n\n\nAbsolute or relative path to the solution package file to add to the app catalog\n\n\n\n\n\n\n--overwrite\n\n\nSet to overwrite the existing package file\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo add an app to the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nWhen specifying the path to the app package file you can use both relative and absolute paths. Note, that \n~\n in the path, will not be resolved and will most likely result in an error.\n\n\nIf you try to upload a package that already exists in the tenant app catalog without specifying the \n--overwrite\n option, the command will fail with an error stating that the specified package already exists.\n\n\nExamples\n\n\nAdd the \nspfx.sppkg\n package to the tenant app catalog\n\n\nspo app add -p /Users/pnp/spfx/sharepoint/solution/spfx.sppkg\n\n\n\n\n\nOverwrite the \nspfx.sppkg\n package in the tenant app catalog with the newer version\n\n\nspo app add -p sharepoint/solution/spfx.sppkg --overwrite\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app add"
         }, 
         {
@@ -132,7 +132,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-add/#options", 
-            "text": "Option  Description      --help  output usage information    -p, --filePath  filePath  Absolute or relative path to the solution package file to add to the app catalog    --overwrite  Set to overwrite the existing package file    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -p, --filePath  filePath  Absolute or relative path to the solution package file to add to the app catalog    --overwrite  Set to overwrite the existing package file    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -142,7 +142,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-add/#examples", 
-            "text": "spo app add -p /Users/pnp/spfx/sharepoint/solution/spfx.sppkg  Adds package spfx.sppkg to the tenant app catalog  spo app add -p sharepoint/solution/spfx.sppkg --overwrite  Overwrites the package spfx.sppkg in the tenant app catalog with the newer version", 
+            "text": "Add the  spfx.sppkg  package to the tenant app catalog  spo app add -p /Users/pnp/spfx/sharepoint/solution/spfx.sppkg  Overwrite the  spfx.sppkg  package in the tenant app catalog with the newer version  spo app add -p sharepoint/solution/spfx.sppkg --overwrite", 
             "title": "Examples"
         }, 
         {
@@ -152,7 +152,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-deploy/", 
-            "text": "spo app deploy\n\n\nDeploys the specified app in the tenant app catalog\n\n\nUsage\n\n\nspo app deploy \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to deploy. Needs to be available in the tenant app catalog.\n\n\n\n\n\n\n-u, --appCatalogUrl [appCatalogUrl]\n\n\n(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo deploy an app in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf you don't specify the URL of the tenant app catalog site using the \nappCatalogUrl\n option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can deploy an app, you have to add it to the tenant app catalog first using the \nspo app add\n command.\n\n\nExamples\n\n\nspo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3\n\n\n\n\n\nDeploys the specified app in the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically.\n\n\nspo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps\n\n\n\n\n\nDeploys the specified app in the tenant app catalog located at \nhttps://contoso.sharepoint.com/sites/apps\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app deploy\n\n\nDeploys the specified app in the tenant app catalog\n\n\nUsage\n\n\nspo app deploy \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to deploy. Needs to be available in the tenant app catalog.\n\n\n\n\n\n\n-u, --appCatalogUrl [appCatalogUrl]\n\n\n(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo deploy an app in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf you don't specify the URL of the tenant app catalog site using the \nappCatalogUrl\n option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can deploy an app, you have to add it to the tenant app catalog first using the \nspo app add\n command.\n\n\nExamples\n\n\nDeploy the specified app in the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically.\n\n\nspo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3\n\n\n\n\n\nDeploy the specified app in the tenant app catalog located at \nhttps://contoso.sharepoint.com/sites/apps\n\n\nspo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app deploy"
         }, 
         {
@@ -167,7 +167,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-deploy/#options", 
-            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to deploy. Needs to be available in the tenant app catalog.    -u, --appCatalogUrl [appCatalogUrl]  (optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to deploy. Needs to be available in the tenant app catalog.    -u, --appCatalogUrl [appCatalogUrl]  (optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -177,7 +177,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-deploy/#examples", 
-            "text": "spo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3  Deploys the specified app in the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically.  spo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps  Deploys the specified app in the tenant app catalog located at  https://contoso.sharepoint.com/sites/apps", 
+            "text": "Deploy the specified app in the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically.  spo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3  Deploy the specified app in the tenant app catalog located at  https://contoso.sharepoint.com/sites/apps  spo app deploy -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps", 
             "title": "Examples"
         }, 
         {
@@ -187,7 +187,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-get/", 
-            "text": "spo app get\n\n\nGets information about the specific app from the tenant app catalog\n\n\nUsage\n\n\nspo app get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo get information about the specified app available in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app get -i b2307a39-e878-458b-bc90-03bc578531d6\n\n\n\n\n\nReturns details about the app with ID 'b2307a39-e878-458b-bc90-03bc578531d6' available in the tenant app catalog.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app get\n\n\nGets information about the specific app from the tenant app catalog\n\n\nUsage\n\n\nspo app get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo get information about the specified app available in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nReturn details about the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n available in the tenant app catalog.\n\n\nspo app get -i b2307a39-e878-458b-bc90-03bc578531d6\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app get"
         }, 
         {
@@ -202,7 +202,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-get/#options", 
-            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -212,7 +212,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-get/#examples", 
-            "text": "spo app get -i b2307a39-e878-458b-bc90-03bc578531d6  Returns details about the app with ID 'b2307a39-e878-458b-bc90-03bc578531d6' available in the tenant app catalog.", 
+            "text": "Return details about the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  available in the tenant app catalog.  spo app get -i b2307a39-e878-458b-bc90-03bc578531d6", 
             "title": "Examples"
         }, 
         {
@@ -222,7 +222,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-install/", 
-            "text": "spo app install\n\n\nInstalls an app from the tenant app catalog in the site\n\n\nUsage\n\n\nspo app install \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to install the app in\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo install an app from the tenant app catalog in a site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can install app in a site, you have to add it to the tenant app catalog first using the \nspo app add\n command.\n\n\nExamples\n\n\nspo app install -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nInstalls the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n in the \nhttps://contoso.sharepoint.com\n site.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app install\n\n\nInstalls an app from the tenant app catalog in the site\n\n\nUsage\n\n\nspo app install \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to install the app in\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo install an app from the tenant app catalog in a site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error. Before you can install app in a site, you have to add it to the tenant app catalog first using the \nspo app add\n command.\n\n\nExamples\n\n\nInstall the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n in the \nhttps://contoso.sharepoint.com\n site.\n\n\nspo app install -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app install"
         }, 
         {
@@ -237,7 +237,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-install/#options", 
-            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to install the app in    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to install the app in    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -247,7 +247,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-install/#examples", 
-            "text": "spo app install -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Installs the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  in the  https://contoso.sharepoint.com  site.", 
+            "text": "Install the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  in the  https://contoso.sharepoint.com  site.  spo app install -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com", 
             "title": "Examples"
         }, 
         {
@@ -257,7 +257,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-list/", 
-            "text": "spo app list\n\n\nLists apps from the tenant app catalog\n\n\nUsage\n\n\nspo app list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list the apps available in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app list\n\n\n\n\n\nlists all apps available in the tenant app catalog\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app list\n\n\nLists apps from the tenant app catalog\n\n\nUsage\n\n\nspo app list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list the apps available in the tenant app catalog, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nList all apps available in the tenant app catalog\n\n\nspo app list\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app list"
         }, 
         {
@@ -272,7 +272,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-list/#options", 
-            "text": "Option  Description      --help  output usage information    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -282,7 +282,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-list/#examples", 
-            "text": "spo app list  lists all apps available in the tenant app catalog", 
+            "text": "List all apps available in the tenant app catalog  spo app list", 
             "title": "Examples"
         }, 
         {
@@ -292,7 +292,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-retract/", 
-            "text": "spo app retract\n\n\nRetracts the specified app from the tenant app catalog\n\n\nUsage\n\n\nspo app retract \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retract. Needs to be available in the tenant app catalog.\n\n\n\n\n\n\n-u, --appCatalogUrl [appCatalogUrl]\n\n\n(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming retracting the app from the tenant app catalog\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo retract an app from the tenant app catalog, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf you don't specify the URL of the tenant app catalog site using the \nappCatalogUrl\n option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error.\n\n\nExamples\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3\n\n\n\n\n\nRetracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps\n\n\n\n\n\nRetracts the specified app from the tenant app catalog located at \nhttps://contoso.sharepoint.com/sites/apps\n. Additionally, will prompt for confirmation before actually retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm\n\n\n\n\n\nRetracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app retract\n\n\nRetracts the specified app from the tenant app catalog\n\n\nUsage\n\n\nspo app retract \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retract. Needs to be available in the tenant app catalog.\n\n\n\n\n\n\n-u, --appCatalogUrl [appCatalogUrl]\n\n\n(optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming retracting the app from the tenant app catalog\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo retract an app from the tenant app catalog, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nIf you don't specify the URL of the tenant app catalog site using the \nappCatalogUrl\n option, the CLI will try to determine its URL automatically. This will be done using SharePoint Search. If the tenant app catalog site hasn't been crawled yet, the CLI will not find it and will prompt you to provide the URL yourself.\n\n\nIf the app with the specified ID doesn't exist in the tenant app catalog, the command will fail with an error.\n\n\nExamples\n\n\nRetract the specified app from the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3\n\n\n\n\n\nRetract the specified app from the tenant app catalog located at \nhttps://contoso.sharepoint.com/sites/apps\n. Additionally, will prompt for confirmation before actually retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps\n\n\n\n\n\nRetract the specified app from the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.\n\n\nspo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app retract"
         }, 
         {
@@ -307,7 +307,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-retract/#options", 
-            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retract. Needs to be available in the tenant app catalog.    -u, --appCatalogUrl [appCatalogUrl]  (optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically    --confirm  Don't prompt for confirming retracting the app from the tenant app catalog    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retract. Needs to be available in the tenant app catalog.    -u, --appCatalogUrl [appCatalogUrl]  (optional) URL of the tenant app catalog site. If not specified, the CLI will try to resolve it automatically    --confirm  Don't prompt for confirming retracting the app from the tenant app catalog    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -317,7 +317,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-retract/#examples", 
-            "text": "spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3  Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps  Retracts the specified app from the tenant app catalog located at  https://contoso.sharepoint.com/sites/apps . Additionally, will prompt for confirmation before actually retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm  Retracts the specified app from the tenant app catalog. Will try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.", 
+            "text": "Retract the specified app from the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically. Additionally, will prompt for confirmation before actually retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3  Retract the specified app from the tenant app catalog located at  https://contoso.sharepoint.com/sites/apps . Additionally, will prompt for confirmation before actually retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/apps  Retract the specified app from the tenant app catalog. Try to resolve the URL of the tenant app catalog automatically. Will not prompt for confirmation before retracting the app.  spo app retract -i 058140e3-0e37-44fc-a1d3-79c487d371a3 --confirm", 
             "title": "Examples"
         }, 
         {
@@ -327,7 +327,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-uninstall/", 
-            "text": "spo app uninstall\n\n\nUninstalls an app from the site\n\n\nUsage\n\n\nspo app uninstall \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to uninstall the app from\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming uninstalling the app\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo uninstall an app from the site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUninstalls the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n from the \nhttps://contoso.sharepoint.com\n site.\n\n\nspo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUninstalls the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n from the \nhttps://contoso.sharepoint.com\n site without prompting for confirmation.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app uninstall\n\n\nUninstalls an app from the site\n\n\nUsage\n\n\nspo app uninstall \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to uninstall the app from\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming uninstalling the app\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo uninstall an app from the site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nUninstall the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n from the \nhttps://contoso.sharepoint.com\n site.\n\n\nspo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUninstall the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n from the \nhttps://contoso.sharepoint.com\n site without prompting for confirmation.\n\n\nspo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app uninstall"
         }, 
         {
@@ -342,7 +342,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-uninstall/#options", 
-            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to uninstall the app from    --confirm  Don't prompt for confirming uninstalling the app    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to uninstall the app from    --confirm  Don't prompt for confirming uninstalling the app    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -352,7 +352,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-uninstall/#examples", 
-            "text": "spo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Uninstalls the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  from the  https://contoso.sharepoint.com  site.  spo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Uninstalls the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  from the  https://contoso.sharepoint.com  site without prompting for confirmation.", 
+            "text": "Uninstall the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  from the  https://contoso.sharepoint.com  site.  spo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Uninstall the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  from the  https://contoso.sharepoint.com  site without prompting for confirmation.  spo app uninstall -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com", 
             "title": "Examples"
         }, 
         {
@@ -362,7 +362,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-upgrade/", 
-            "text": "spo app upgrade\n\n\nUpgrades app in the specified site\n\n\nUsage\n\n\nspo app upgrade \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to install the app in\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo upgrade an app in the site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nspo app upgrade -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nUpgrades the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n in the \nhttps://contoso.sharepoint.com\n site.\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
+            "text": "spo app upgrade\n\n\nUpgrades app in the specified site\n\n\nUsage\n\n\nspo app upgrade \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-s, --siteUrl \nsiteUrl\n\n\nAbsolute URL of the site to install the app in\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo upgrade an app in the site, you have to first connect to a SharePoint site using the \nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nUpgrade the app with ID \nb2307a39-e878-458b-bc90-03bc578531d6\n in the \nhttps://contoso.sharepoint.com\n site.\n\n\nspo app upgrade -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com\n\n\n\n\n\nMore information\n\n\n\n\nApplication Lifecycle Management (ALM) APIs: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins", 
             "title": "app upgrade"
         }, 
         {
@@ -377,7 +377,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-upgrade/#options", 
-            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to install the app in    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -s, --siteUrl  siteUrl  Absolute URL of the site to install the app in    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -387,7 +387,7 @@
         }, 
         {
             "location": "/cmd/spo/app/app-upgrade/#examples", 
-            "text": "spo app upgrade -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com  Upgrades the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  in the  https://contoso.sharepoint.com  site.", 
+            "text": "Upgrade the app with ID  b2307a39-e878-458b-bc90-03bc578531d6  in the  https://contoso.sharepoint.com  site.  spo app upgrade -i b2307a39-e878-458b-bc90-03bc578531d6 -s https://contoso.sharepoint.com", 
             "title": "Examples"
         }, 
         {
@@ -397,7 +397,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-get/", 
-            "text": "spo cdn get\n\n\nView current status of the specified Office 365 CDN\n\n\nUsage\n\n\nspo cdn get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo view the status of an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nspo cdn get\n\n\n\n\n\nshows if the Public CDN is currently enabled or not\n\n\nspo cdn get -t Private\n\n\n\n\n\nshows if the Private CDN is currently enabled or not\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn get\n\n\nView current status of the specified Office 365 CDN\n\n\nUsage\n\n\nspo cdn get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo view the status of an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nShow if the Public CDN is currently enabled or not\n\n\nspo cdn get\n\n\n\n\n\nShow if the Private CDN is currently enabled or not\n\n\nspo cdn get -t Private\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn get"
         }, 
         {
@@ -412,7 +412,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-get/#options", 
-            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -422,7 +422,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-get/#examples", 
-            "text": "spo cdn get  shows if the Public CDN is currently enabled or not  spo cdn get -t Private  shows if the Private CDN is currently enabled or not", 
+            "text": "Show if the Public CDN is currently enabled or not  spo cdn get  Show if the Private CDN is currently enabled or not  spo cdn get -t Private", 
             "title": "Examples"
         }, 
         {
@@ -432,7 +432,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-set/", 
-            "text": "spo cdn set\n\n\nEnable or disable the specified Office 365 CDN\n\n\nUsage\n\n\nspo cdn \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-e, --enabled \nenabled\n\n\nSet to true to enable CDN or to false to disable it. Valid values are true\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo enable or disable an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nUsing the \n-e, --enabled\n option you can specify whether the given CDN type should be\nenabled or disabled. Use true to enable the specified CDN and false to\ndisable it.\n\n\nExamples\n\n\nspo cdn \nset\n -t Public -e \ntrue\n\n\n\n\n\n\nenables the Office 365 Public CDN on the current tenant\n\n\nspo cdn \nset\n -t Public -e \nfalse\n\n\n\n\n\n\ndisables the Office 365 Public CDN on the current tenant\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn set\n\n\nEnable or disable the specified Office 365 CDN\n\n\nUsage\n\n\nspo cdn \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-e, --enabled \nenabled\n\n\nSet to true to enable CDN or to false to disable it. Valid values are true\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo enable or disable an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nUsing the \n-e, --enabled\n option you can specify whether the given CDN type should be\nenabled or disabled. Use true to enable the specified CDN and false to\ndisable it.\n\n\nExamples\n\n\nEnable the Office 365 Public CDN on the current tenant\n\n\nspo cdn \nset\n -t Public -e \ntrue\n\n\n\n\n\n\nDisable the Office 365 Public CDN on the current tenant\n\n\nspo cdn \nset\n -t Public -e \nfalse\n\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn set"
         }, 
         {
@@ -447,7 +447,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-set/#options", 
-            "text": "Option  Description      --help  output usage information    -e, --enabled  enabled  Set to true to enable CDN or to false to disable it. Valid values are true    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -e, --enabled  enabled  Set to true to enable CDN or to false to disable it. Valid values are true    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -457,7 +457,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-set/#examples", 
-            "text": "spo cdn  set  -t Public -e  true   enables the Office 365 Public CDN on the current tenant  spo cdn  set  -t Public -e  false   disables the Office 365 Public CDN on the current tenant", 
+            "text": "Enable the Office 365 Public CDN on the current tenant  spo cdn  set  -t Public -e  true   Disable the Office 365 Public CDN on the current tenant  spo cdn  set  -t Public -e  false", 
             "title": "Examples"
         }, 
         {
@@ -467,7 +467,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-list/", 
-            "text": "spo cdn origin list\n\n\nList CDN origins settings for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn origin list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list origins of a Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nspo cdn origin list\n\n\n\n\n\nshows the list of origins configured for the Public CDN\n\n\nspo cdn origin list -t Private\n\n\n\n\n\nshows the list of origins configured for the Private CDN\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn origin list\n\n\nList CDN origins settings for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn origin list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list origins of a Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nShow the list of origins configured for the Public CDN\n\n\nspo cdn origin list\n\n\n\n\n\nShow the list of origins configured for the Private CDN\n\n\nspo cdn origin list -t Private\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn origin list"
         }, 
         {
@@ -482,7 +482,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-list/#options", 
-            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -492,7 +492,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-list/#examples", 
-            "text": "spo cdn origin list  shows the list of origins configured for the Public CDN  spo cdn origin list -t Private  shows the list of origins configured for the Private CDN", 
+            "text": "Show the list of origins configured for the Public CDN  spo cdn origin list  Show the list of origins configured for the Private CDN  spo cdn origin list -t Private", 
             "title": "Examples"
         }, 
         {
@@ -502,7 +502,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-remove/", 
-            "text": "spo cdn origin remove\n\n\nRemoves CDN origin for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn origin remove \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-o, --origin \norigin\n\n\nOrigin to remove from the current CDN configuration\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming removal of a tenant property\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo remove an origin from an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nspo cdn origin remove -t Public -o */CDN\n\n\n\n\n\nremoves */CDN from the list of origins of the Public CDN\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn origin remove\n\n\nRemoves CDN origin for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn origin remove \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-r, --origin \norigin\n\n\nOrigin to remove from the current CDN configuration\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming removal of a tenant property\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo remove an origin from an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nRemove \n*/CDN\n from the list of origins of the Public CDN\n\n\nspo cdn origin remove -t Public -r */CDN\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn origin remove"
         }, 
         {
@@ -517,7 +517,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-remove/#options", 
-            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -o, --origin  origin  Origin to remove from the current CDN configuration    --confirm  Don't prompt for confirming removal of a tenant property    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -r, --origin  origin  Origin to remove from the current CDN configuration    --confirm  Don't prompt for confirming removal of a tenant property    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -527,7 +527,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-remove/#examples", 
-            "text": "spo cdn origin remove -t Public -o */CDN  removes */CDN from the list of origins of the Public CDN", 
+            "text": "Remove  */CDN  from the list of origins of the Public CDN  spo cdn origin remove -t Public -r */CDN", 
             "title": "Examples"
         }, 
         {
@@ -537,7 +537,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-set/", 
-            "text": "spo cdn origin set\n\n\nAdds CDN origin to the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn origin \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-o, --origin \norigin\n\n\nOrigin to add to the current CDN configuration\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo add origins to an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nspo cdn origin \nset\n -t Public -o */CDN\n\n\n\n\n\nadds */CDN to the list of origins of the Public CDN\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn origin set\n\n\nAdds CDN origin to the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn origin \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-r, --origin \norigin\n\n\nOrigin to add to the current CDN configuration\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo add origins to an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nAdd \n*/CDN\n to the list of origins of the Public CDN\n\n\nspo cdn origin \nset\n -t Public -r */CDN\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn origin set"
         }, 
         {
@@ -552,7 +552,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-set/#options", 
-            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -o, --origin  origin  Origin to add to the current CDN configuration    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -r, --origin  origin  Origin to add to the current CDN configuration    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -562,7 +562,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-origin-set/#examples", 
-            "text": "spo cdn origin  set  -t Public -o */CDN  adds */CDN to the list of origins of the Public CDN", 
+            "text": "Add  */CDN  to the list of origins of the Public CDN  spo cdn origin  set  -t Public -r */CDN", 
             "title": "Examples"
         }, 
         {
@@ -572,7 +572,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-policy-list/", 
-            "text": "spo cdn policy list\n\n\nLists CDN policies settings for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn policy list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list the policies of an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nspo cdn policy list\n\n\n\n\n\nshows the list of policies configured for the Public CDN\n\n\nspo cdn policy list -t Private\n\n\n\n\n\nshows the list of policies configured for the Private CDN\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn policy list\n\n\nLists CDN policies settings for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn policy list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list the policies of an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nShow the list of policies configured for the Public CDN\n\n\nspo cdn policy list\n\n\n\n\n\nShow the list of policies configured for the Private CDN\n\n\nspo cdn policy list -t Private\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn policy list"
         }, 
         {
@@ -587,7 +587,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-policy-list/#options", 
-            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -597,7 +597,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-policy-list/#examples", 
-            "text": "spo cdn policy list  shows the list of policies configured for the Public CDN  spo cdn policy list -t Private  shows the list of policies configured for the Private CDN", 
+            "text": "Show the list of policies configured for the Public CDN  spo cdn policy list  Show the list of policies configured for the Private CDN  spo cdn policy list -t Private", 
             "title": "Examples"
         }, 
         {
@@ -607,7 +607,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-policy-set/", 
-            "text": "spo cdn policy set\n\n\nSets CDN policy value for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn policy \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-p, --policy \npolicy\n\n\nCDN policy to configure. \nIncludeFileExtensions|ExcludeRestrictedSiteClassifications\n\n\n\n\n\n\n-v, --value \nvalue\n\n\nValue for the policy to configure\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo set the policy of an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nspo cdn policy \nset\n -t Public -p IncludeFileExtensions -v CSS,EOT,GIF,ICO,JPEG,JPG,JS,MAP,PNG,SVG,TTF,WOFF,JSON\n\n\n\n\n\nsets the list of extensions supported by the Public CDN\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
+            "text": "spo cdn policy set\n\n\nSets CDN policy value for the current SharePoint Online tenant\n\n\nUsage\n\n\nspo cdn policy \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-t, --type [type]\n\n\nType of CDN to manage. \nPublic|Private\n. Default \nPublic\n\n\n\n\n\n\n-p, --policy \npolicy\n\n\nCDN policy to configure. \nIncludeFileExtensions|ExcludeRestrictedSiteClassifications\n\n\n\n\n\n\n-v, --value \nvalue\n\n\nValue for the policy to configure\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo set the policy of an Office 365 CDN, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nUsing the \n-t, --type\n option you can choose whether you want to manage the settings of\nthe Public (default) or Private CDN. If you don't use the option, the command will use the Public CDN.\n\n\nExamples\n\n\nSet the list of extensions supported by the Public CDN\n\n\nspo cdn policy \nset\n -t Public -p IncludeFileExtensions -v CSS,EOT,GIF,ICO,JPEG,JPG,JS,MAP,PNG,SVG,TTF,WOFF,JSON\n\n\n\n\n\nMore information\n\n\n\n\nGeneral availability of Office 365 CDN: \nhttps://dev.office.com/blogs/general-availability-of-office-365-cdn", 
             "title": "cdn policy set"
         }, 
         {
@@ -622,7 +622,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-policy-set/#options", 
-            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -p, --policy  policy  CDN policy to configure.  IncludeFileExtensions|ExcludeRestrictedSiteClassifications    -v, --value  value  Value for the policy to configure    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -t, --type [type]  Type of CDN to manage.  Public|Private . Default  Public    -p, --policy  policy  CDN policy to configure.  IncludeFileExtensions|ExcludeRestrictedSiteClassifications    -v, --value  value  Value for the policy to configure    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -632,7 +632,7 @@
         }, 
         {
             "location": "/cmd/spo/cdn/cdn-policy-set/#examples", 
-            "text": "spo cdn policy  set  -t Public -p IncludeFileExtensions -v CSS,EOT,GIF,ICO,JPEG,JPG,JS,MAP,PNG,SVG,TTF,WOFF,JSON  sets the list of extensions supported by the Public CDN", 
+            "text": "Set the list of extensions supported by the Public CDN  spo cdn policy  set  -t Public -p IncludeFileExtensions -v CSS,EOT,GIF,ICO,JPEG,JPG,JS,MAP,PNG,SVG,TTF,WOFF,JSON", 
             "title": "Examples"
         }, 
         {
@@ -641,8 +641,43 @@
             "title": "More information"
         }, 
         {
+            "location": "/cmd/spo/customaction/customaction-get/", 
+            "text": "spo customaction get\n\n\nGets information about the specific user custom action for site or site collection\n\n\nUsage\n\n\nspo customaction get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-i, --id \nid\n\n\nID of the app to retrieve information for\n\n\n\n\n\n\n-u, --url \nurl\n\n\nUrl of the site or site collection to retrieve the custom action from\n\n\n\n\n\n\n-s, --scope [scope]\n\n\nScope of the custom action. Allowed values \nSite|Web|All\n. Default \nAll\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo retrieve custom action, you have to first connect to a SharePoint Online site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nExamples\n\n\nReturn details about the user custom action with ID \n058140e3-0e37-44fc-a1d3-79c487d371a3\n located in site or site collection \nhttps://contoso.sharepoint.com/sites/test\n\n\nspo customaction get -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/test\n\n\n\n\n\nReturn details about the user custom action with ID \n058140e3-0e37-44fc-a1d3-79c487d371a3\n located in site or site collection \nhttps://contoso.sharepoint.com/sites/test\n\n\nspo customaction get --id 058140e3-0e37-44fc-a1d3-79c487d371a3 --url https://contoso.sharepoint.com/sites/test\n\n\n\n\n\nReturn details about the user custom action with ID \n058140e3-0e37-44fc-a1d3-79c487d371a3\n located in site collection \nhttps://contoso.sharepoint.com/sites/test\n\n\nspo customaction get -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/test -s Site\n\n\n\n\n\nReturn details about the user custom action with ID \n058140e3-0e37-44fc-a1d3-79c487d371a3\n located in site \nhttps://contoso.sharepoint.com/sites/test\n\n\nspo customaction get --id 058140e3-0e37-44fc-a1d3-79c487d371a3 --url https://contoso.sharepoint.com/sites/test --scope Web\n\n\n\n\n\nMore information\n\n\n\n\nUserCustomAction REST API resources: \nhttps://msdn.microsoft.com/en-us/library/office/dn531432.aspx#bk_UserCustomAction", 
+            "title": "customaction get"
+        }, 
+        {
+            "location": "/cmd/spo/customaction/customaction-get/#spo-customaction-get", 
+            "text": "Gets information about the specific user custom action for site or site collection", 
+            "title": "spo customaction get"
+        }, 
+        {
+            "location": "/cmd/spo/customaction/customaction-get/#usage", 
+            "text": "spo customaction get  [ options ]", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/cmd/spo/customaction/customaction-get/#options", 
+            "text": "Option  Description      --help  output usage information    -i, --id  id  ID of the app to retrieve information for    -u, --url  url  Url of the site or site collection to retrieve the custom action from    -s, --scope [scope]  Scope of the custom action. Allowed values  Site|Web|All . Default  All    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "title": "Options"
+        }, 
+        {
+            "location": "/cmd/spo/customaction/customaction-get/#remarks", 
+            "text": "To retrieve custom action, you have to first connect to a SharePoint Online site using the spo connect  command, eg.  spo connect https://contoso.sharepoint.com .", 
+            "title": "Remarks"
+        }, 
+        {
+            "location": "/cmd/spo/customaction/customaction-get/#examples", 
+            "text": "Return details about the user custom action with ID  058140e3-0e37-44fc-a1d3-79c487d371a3  located in site or site collection  https://contoso.sharepoint.com/sites/test  spo customaction get -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/test  Return details about the user custom action with ID  058140e3-0e37-44fc-a1d3-79c487d371a3  located in site or site collection  https://contoso.sharepoint.com/sites/test  spo customaction get --id 058140e3-0e37-44fc-a1d3-79c487d371a3 --url https://contoso.sharepoint.com/sites/test  Return details about the user custom action with ID  058140e3-0e37-44fc-a1d3-79c487d371a3  located in site collection  https://contoso.sharepoint.com/sites/test  spo customaction get -i 058140e3-0e37-44fc-a1d3-79c487d371a3 -u https://contoso.sharepoint.com/sites/test -s Site  Return details about the user custom action with ID  058140e3-0e37-44fc-a1d3-79c487d371a3  located in site  https://contoso.sharepoint.com/sites/test  spo customaction get --id 058140e3-0e37-44fc-a1d3-79c487d371a3 --url https://contoso.sharepoint.com/sites/test --scope Web", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/cmd/spo/customaction/customaction-get/#more-information", 
+            "text": "UserCustomAction REST API resources:  https://msdn.microsoft.com/en-us/library/office/dn531432.aspx#bk_UserCustomAction", 
+            "title": "More information"
+        }, 
+        {
             "location": "/cmd/spo/storageentity/storageentity-get/", 
-            "text": "spo storageentity get\n\n\nGet details for the specified tenant property\n\n\nUsage\n\n\nspo storageentity get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-k, --key \nkey\n\n\nName of the tenant property to retrieve\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo get details of a tenant property, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nTenant properties are stored in the app catalog site associated with the site to which you are currently connected. When retrieving the specified tenant property, SharePoint will automatically find the associated app catalog and try to retrieve the property from it.\n\n\nExamples\n\n\nspo storageentity get -k AnalyticsId\n\n\n\n\n\nshow the value, description and comment of the \nAnalyticsId\n tenant property\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
+            "text": "spo storageentity get\n\n\nGet details for the specified tenant property\n\n\nUsage\n\n\nspo storageentity get \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-k, --key \nkey\n\n\nName of the tenant property to retrieve\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo get details of a tenant property, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nTenant properties are stored in the app catalog site associated with the site to which you are currently connected. When retrieving the specified tenant property, SharePoint will automatically find the associated app catalog and try to retrieve the property from it.\n\n\nExamples\n\n\nShow the value, description and comment of the \nAnalyticsId\n tenant property\n\n\nspo storageentity get -k AnalyticsId\n\n\n\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
             "title": "storageentity get"
         }, 
         {
@@ -657,7 +692,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-get/#options", 
-            "text": "Option  Description      --help  output usage information    -k, --key  key  Name of the tenant property to retrieve    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -k, --key  key  Name of the tenant property to retrieve    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -667,7 +702,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-get/#examples", 
-            "text": "spo storageentity get -k AnalyticsId  show the value, description and comment of the  AnalyticsId  tenant property", 
+            "text": "Show the value, description and comment of the  AnalyticsId  tenant property  spo storageentity get -k AnalyticsId", 
             "title": "Examples"
         }, 
         {
@@ -677,7 +712,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-list/", 
-            "text": "spo storageentity list\n\n\nLists tenant properties stored on the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo storageentity list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-u, --appCatalogUrl \nappCatalogUrl\n\n\nURL of the app catalog site\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list tenant properties, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nTenant properties are stored in the app catalog site. To list all tenant properties, you have to specify the absolute URL of the app catalog site. If you specify an incorrect URL, or the site at the given URL is not an app catalog site, no properties will be retrieved.\n\n\nExamples\n\n\nspo storageentity list -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nlist all tenant properties stored in the https://contoso.sharepoint.com/sites/appcatalog app catalog site\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
+            "text": "spo storageentity list\n\n\nLists tenant properties stored on the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo storageentity list \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-u, --appCatalogUrl \nappCatalogUrl\n\n\nURL of the app catalog site\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo list tenant properties, you have to first connect to a SharePoint site using the\n\nspo connect\n command, eg. \nspo connect https://contoso.sharepoint.com\n.\n\n\nTenant properties are stored in the app catalog site. To list all tenant properties, you have to specify the absolute URL of the app catalog site. If you specify an incorrect URL, or the site at the given URL is not an app catalog site, no properties will be retrieved.\n\n\nExamples\n\n\nList all tenant properties stored in the \nhttps://contoso.sharepoint.com/sites/appcatalog\n app catalog site\n\n\nspo storageentity list -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
             "title": "storageentity list"
         }, 
         {
@@ -692,7 +727,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-list/#options", 
-            "text": "Option  Description      --help  output usage information    -u, --appCatalogUrl  appCatalogUrl  URL of the app catalog site    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -u, --appCatalogUrl  appCatalogUrl  URL of the app catalog site    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -702,7 +737,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-list/#examples", 
-            "text": "spo storageentity list -u https://contoso.sharepoint.com/sites/appcatalog  list all tenant properties stored in the https://contoso.sharepoint.com/sites/appcatalog app catalog site", 
+            "text": "List all tenant properties stored in the  https://contoso.sharepoint.com/sites/appcatalog  app catalog site  spo storageentity list -u https://contoso.sharepoint.com/sites/appcatalog", 
             "title": "Examples"
         }, 
         {
@@ -712,7 +747,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-remove/", 
-            "text": "spo storageentity remove\n\n\nRemoves tenant property stored on the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo storageentity remove \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-u, --appCatalogUrl \nappCatalogUrl\n\n\nURL of the app catalog site\n\n\n\n\n\n\n-k, --key \nkey\n\n\nName of the tenant property to retrieve\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming removal of a tenant property\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo remove a tenant property, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nTenant properties are stored in the app catalog site associated with that tenant.\nTo remove a property, you have to specify the absolute URL of the app catalog site.\nIf you specify the URL of a site different than the app catalog, you will get an access denied error.\n\n\nExamples\n\n\nspo storageentity remove -k AnalyticsId -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nremove the AnalyticsId tenant property. Yields a confirmation prompt before actually\nremoving the property\n\n\nspo storageentity remove -k AnalyticsId --confirm -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nremove the AnalyticsId tenant property. Suppresses the confirmation prompt\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
+            "text": "spo storageentity remove\n\n\nRemoves tenant property stored on the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo storageentity remove \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-u, --appCatalogUrl \nappCatalogUrl\n\n\nURL of the app catalog site\n\n\n\n\n\n\n-k, --key \nkey\n\n\nName of the tenant property to retrieve\n\n\n\n\n\n\n--confirm\n\n\nDon't prompt for confirming removal of a tenant property\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo remove a tenant property, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nTenant properties are stored in the app catalog site associated with that tenant.\nTo remove a property, you have to specify the absolute URL of the app catalog site.\nIf you specify the URL of a site different than the app catalog, you will get an access denied error.\n\n\nExamples\n\n\nRemove the \nAnalyticsId\n tenant property. Yields a confirmation prompt before actually removing the property\n\n\nspo storageentity remove -k AnalyticsId -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nRemove the \nAnalyticsId\n tenant property. Suppresses the confirmation prompt\n\n\nspo storageentity remove -k AnalyticsId --confirm -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
             "title": "storageentity remove"
         }, 
         {
@@ -727,7 +762,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-remove/#options", 
-            "text": "Option  Description      --help  output usage information    -u, --appCatalogUrl  appCatalogUrl  URL of the app catalog site    -k, --key  key  Name of the tenant property to retrieve    --confirm  Don't prompt for confirming removal of a tenant property    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -u, --appCatalogUrl  appCatalogUrl  URL of the app catalog site    -k, --key  key  Name of the tenant property to retrieve    --confirm  Don't prompt for confirming removal of a tenant property    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -737,7 +772,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-remove/#examples", 
-            "text": "spo storageentity remove -k AnalyticsId -u https://contoso.sharepoint.com/sites/appcatalog  remove the AnalyticsId tenant property. Yields a confirmation prompt before actually\nremoving the property  spo storageentity remove -k AnalyticsId --confirm -u https://contoso.sharepoint.com/sites/appcatalog  remove the AnalyticsId tenant property. Suppresses the confirmation prompt", 
+            "text": "Remove the  AnalyticsId  tenant property. Yields a confirmation prompt before actually removing the property  spo storageentity remove -k AnalyticsId -u https://contoso.sharepoint.com/sites/appcatalog  Remove the  AnalyticsId  tenant property. Suppresses the confirmation prompt  spo storageentity remove -k AnalyticsId --confirm -u https://contoso.sharepoint.com/sites/appcatalog", 
             "title": "Examples"
         }, 
         {
@@ -747,7 +782,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-set/", 
-            "text": "spo storageentity set\n\n\nSets tenant property on the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo storageentity \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-u, --appCatalogUrl \nappCatalogUrl\n\n\nURL of the app catalog site\n\n\n\n\n\n\n-k, --key \nkey\n\n\nName of the tenant property to retrieve\n\n\n\n\n\n\n-v, --value \nvalue\n\n\nValue to set for the property\n\n\n\n\n\n\n-d, --description [description]\n\n\nDescription to set for the property (optional)\n\n\n\n\n\n\n-c, --comment [comment]\n\n\nComment to set for the property (optional)\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo set a tenant property, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nTenant properties are stored in the app catalog site associated with that tenant.\nTo set a property, you have to specify the absolute URL of the app catalog site.\nIf you specify the URL of a site different than the app catalog, you will get an access denied error.\n\n\nExamples\n\n\nspo storageentity \nset\n -k AnalyticsId -v \n123\n -d \nWeb analytics ID\n -c \nUse on all sites\n -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nset \n123\n as the value of the \nAnalyticsId\n tenant property. Also include a description and a comment for additional clarification of the usage of the property.\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
+            "text": "spo storageentity set\n\n\nSets tenant property on the specified SharePoint Online app catalog\n\n\nUsage\n\n\nspo storageentity \nset\n \n[\noptions\n]\n\n\n\n\n\n\nOptions\n\n\n\n\n\n\n\n\nOption\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n--help\n\n\noutput usage information\n\n\n\n\n\n\n-u, --appCatalogUrl \nappCatalogUrl\n\n\nURL of the app catalog site\n\n\n\n\n\n\n-k, --key \nkey\n\n\nName of the tenant property to retrieve\n\n\n\n\n\n\n-v, --value \nvalue\n\n\nValue to set for the property\n\n\n\n\n\n\n-d, --description [description]\n\n\nDescription to set for the property (optional)\n\n\n\n\n\n\n-c, --comment [comment]\n\n\nComment to set for the property (optional)\n\n\n\n\n\n\n-o, --output \noutput\n\n\nOutput type. \njson|text\n. Default \ntext\n\n\n\n\n\n\n--verbose\n\n\nRuns command with verbose logging\n\n\n\n\n\n\n--debug\n\n\nRuns command with debug logging\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nBefore using this command, connect to a SharePoint Online tenant admin site, using the \nspo connect\n command.\n\n\n\n\nRemarks\n\n\nTo set a tenant property, you have to first connect to a tenant admin site using the\n\nspo connect\n command, eg. \nspo connect https://contoso-admin.sharepoint.com\n.\nIf you are connected to a different site and will try to manage tenant properties,\nyou will get an error.\n\n\nTenant properties are stored in the app catalog site associated with that tenant.\nTo set a property, you have to specify the absolute URL of the app catalog site.\nIf you specify the URL of a site different than the app catalog, you will get an access denied error.\n\n\nExamples\n\n\nSet \n123\n as the value of the \nAnalyticsId\n tenant property. Also include a description and a comment for additional clarification of the usage of the property.\n\n\nspo storageentity \nset\n -k AnalyticsId -v \n123\n -d \nWeb analytics ID\n -c \nUse on all sites\n -u https://contoso.sharepoint.com/sites/appcatalog\n\n\n\n\n\nMore information\n\n\n\n\nSharePoint Framework Tenant Properties: \nhttps://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties", 
             "title": "storageentity set"
         }, 
         {
@@ -762,7 +797,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-set/#options", 
-            "text": "Option  Description      --help  output usage information    -u, --appCatalogUrl  appCatalogUrl  URL of the app catalog site    -k, --key  key  Name of the tenant property to retrieve    -v, --value  value  Value to set for the property    -d, --description [description]  Description to set for the property (optional)    -c, --comment [comment]  Comment to set for the property (optional)    --verbose  Runs command with verbose logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
+            "text": "Option  Description      --help  output usage information    -u, --appCatalogUrl  appCatalogUrl  URL of the app catalog site    -k, --key  key  Name of the tenant property to retrieve    -v, --value  value  Value to set for the property    -d, --description [description]  Description to set for the property (optional)    -c, --comment [comment]  Comment to set for the property (optional)    -o, --output  output  Output type.  json|text . Default  text    --verbose  Runs command with verbose logging    --debug  Runs command with debug logging      Important  Before using this command, connect to a SharePoint Online tenant admin site, using the  spo connect  command.", 
             "title": "Options"
         }, 
         {
@@ -772,7 +807,7 @@
         }, 
         {
             "location": "/cmd/spo/storageentity/storageentity-set/#examples", 
-            "text": "spo storageentity  set  -k AnalyticsId -v  123  -d  Web analytics ID  -c  Use on all sites  -u https://contoso.sharepoint.com/sites/appcatalog  set  123  as the value of the  AnalyticsId  tenant property. Also include a description and a comment for additional clarification of the usage of the property.", 
+            "text": "Set  123  as the value of the  AnalyticsId  tenant property. Also include a description and a comment for additional clarification of the usage of the property.  spo storageentity  set  -k AnalyticsId -v  123  -d  Web analytics ID  -c  Use on all sites  -u https://contoso.sharepoint.com/sites/appcatalog", 
             "title": "Examples"
         }, 
         {
@@ -792,7 +827,7 @@
         }, 
         {
             "location": "/about/release-notes/", 
-            "text": "Release notes\n\n\nv0.2.0\n\n\nNew commands:\n\n\nSharePoint Online:\n\n\n\n\nspo app add\n - add an app to the specified SharePoint Online app catalog\n\n\nspo app deploy\n - deploy the specified app in the tenant app catalog\n\n\nspo app get\n - get information about the specific app from the tenant app catalog\n\n\nspo app install\n - install an app from the tenant app catalog in the site\n\n\nspo app list\n - list apps from the tenant app catalog\n\n\nspo app retract\n - retract the specified app from the tenant app catalog\n\n\nspo app uninstall\n - uninstall an app from the site\n\n\nspo app upgrade\n - upgrade app in the specified site\n\n\n\n\nv0.1.1\n\n\n\n\nFixed bug in resolving command paths on Windows\n\n\n\n\nv0.1.0\n\n\nInitial release.\n\n\nNew commands:\n\n\nSharePoint Online:\n\n\n\n\nspo cdn get\n - get Office 365 CDN status\n\n\nspo cdn origin list\n - list Office 365 CDN origins\n\n\nspo cdn origin remove\n - remove Office 365 CDN origin\n\n\nspo cdn origin set\n - set Office 365 CDN origin\n\n\nspo cdn policy list\n - list Office 365 CDN policies\n\n\nspo cdn policy set\n - set Office 365 CDN policy\n\n\nspo cdn set\n - enable/disable Office 365 CDN\n\n\nspo connect\n - connect to a SharePoint Online site\n\n\nspo disconnect\n - disconnect from SharePoint\n\n\nspo status\n - show SharePoint Online connection status\n\n\nspo storageentity get\n - get value of a tenant property\n\n\nspo storageentity list\n - list all tenant properties\n\n\nspo storageentity remove\n - remove a tenant property\n\n\nspo storageentity set\n - set a tenant property", 
+            "text": "Release notes\n\n\nv0.3.0\n\n\nNew commands\n\n\nSharePoint Online:\n\n\n\n\nspo customaction get\n - gets information about the specific user custom action \n#20\n\n\n\n\nChanges\n\n\n\n\nchanged command output to silent \n#47\n\n\nadded user-agent string to all requests \n#52\n\n\nrefactored \nspo cdn get\n and \nspo storageentity set\n to use the \ngetRequestDigest\n helper \n#78\n and \n#80\n\n\nadded common handler for rejected OData promises \n#59\n\n\nadded Google Analytics code to documentation \n#84\n\n\nadded support for formatting command output as JSON \n#48\n\n\n\n\nv0.2.0\n\n\nNew commands\n\n\nSharePoint Online:\n\n\n\n\nspo app add\n - add an app to the specified SharePoint Online app catalog \n#3\n\n\nspo app deploy\n - deploy the specified app in the tenant app catalog \n#7\n\n\nspo app get\n - get information about the specific app from the tenant app catalog \n#2\n\n\nspo app install\n - install an app from the tenant app catalog in the site \n#4\n\n\nspo app list\n - list apps from the tenant app catalog \n#1\n\n\nspo app retract\n - retract the specified app from the tenant app catalog \n#8\n\n\nspo app uninstall\n - uninstall an app from the site \n#5\n\n\nspo app upgrade\n - upgrade app in the specified site \n#6\n\n\n\n\nv0.1.1\n\n\nChanges\n\n\n\n\nFixed bug in resolving command paths on Windows\n\n\n\n\nv0.1.0\n\n\nInitial release.\n\n\nNew commands\n\n\nSharePoint Online:\n\n\n\n\nspo cdn get\n - get Office 365 CDN status\n\n\nspo cdn origin list\n - list Office 365 CDN origins\n\n\nspo cdn origin remove\n - remove Office 365 CDN origin\n\n\nspo cdn origin set\n - set Office 365 CDN origin\n\n\nspo cdn policy list\n - list Office 365 CDN policies\n\n\nspo cdn policy set\n - set Office 365 CDN policy\n\n\nspo cdn set\n - enable/disable Office 365 CDN\n\n\nspo connect\n - connect to a SharePoint Online site\n\n\nspo disconnect\n - disconnect from SharePoint\n\n\nspo status\n - show SharePoint Online connection status\n\n\nspo storageentity get\n - get value of a tenant property\n\n\nspo storageentity list\n - list all tenant properties\n\n\nspo storageentity remove\n - remove a tenant property\n\n\nspo storageentity set\n - set a tenant property", 
             "title": "Release notes"
         }, 
         {
@@ -801,19 +836,49 @@
             "title": "Release notes"
         }, 
         {
+            "location": "/about/release-notes/#v030", 
+            "text": "", 
+            "title": "v0.3.0"
+        }, 
+        {
+            "location": "/about/release-notes/#new-commands", 
+            "text": "SharePoint Online:   spo customaction get  - gets information about the specific user custom action  #20", 
+            "title": "New commands"
+        }, 
+        {
+            "location": "/about/release-notes/#changes", 
+            "text": "changed command output to silent  #47  added user-agent string to all requests  #52  refactored  spo cdn get  and  spo storageentity set  to use the  getRequestDigest  helper  #78  and  #80  added common handler for rejected OData promises  #59  added Google Analytics code to documentation  #84  added support for formatting command output as JSON  #48", 
+            "title": "Changes"
+        }, 
+        {
             "location": "/about/release-notes/#v020", 
-            "text": "New commands:  SharePoint Online:   spo app add  - add an app to the specified SharePoint Online app catalog  spo app deploy  - deploy the specified app in the tenant app catalog  spo app get  - get information about the specific app from the tenant app catalog  spo app install  - install an app from the tenant app catalog in the site  spo app list  - list apps from the tenant app catalog  spo app retract  - retract the specified app from the tenant app catalog  spo app uninstall  - uninstall an app from the site  spo app upgrade  - upgrade app in the specified site", 
+            "text": "", 
             "title": "v0.2.0"
         }, 
         {
+            "location": "/about/release-notes/#new-commands_1", 
+            "text": "SharePoint Online:   spo app add  - add an app to the specified SharePoint Online app catalog  #3  spo app deploy  - deploy the specified app in the tenant app catalog  #7  spo app get  - get information about the specific app from the tenant app catalog  #2  spo app install  - install an app from the tenant app catalog in the site  #4  spo app list  - list apps from the tenant app catalog  #1  spo app retract  - retract the specified app from the tenant app catalog  #8  spo app uninstall  - uninstall an app from the site  #5  spo app upgrade  - upgrade app in the specified site  #6", 
+            "title": "New commands"
+        }, 
+        {
             "location": "/about/release-notes/#v011", 
-            "text": "Fixed bug in resolving command paths on Windows", 
+            "text": "", 
             "title": "v0.1.1"
         }, 
         {
+            "location": "/about/release-notes/#changes_1", 
+            "text": "Fixed bug in resolving command paths on Windows", 
+            "title": "Changes"
+        }, 
+        {
             "location": "/about/release-notes/#v010", 
-            "text": "Initial release.  New commands:  SharePoint Online:   spo cdn get  - get Office 365 CDN status  spo cdn origin list  - list Office 365 CDN origins  spo cdn origin remove  - remove Office 365 CDN origin  spo cdn origin set  - set Office 365 CDN origin  spo cdn policy list  - list Office 365 CDN policies  spo cdn policy set  - set Office 365 CDN policy  spo cdn set  - enable/disable Office 365 CDN  spo connect  - connect to a SharePoint Online site  spo disconnect  - disconnect from SharePoint  spo status  - show SharePoint Online connection status  spo storageentity get  - get value of a tenant property  spo storageentity list  - list all tenant properties  spo storageentity remove  - remove a tenant property  spo storageentity set  - set a tenant property", 
+            "text": "Initial release.", 
             "title": "v0.1.0"
+        }, 
+        {
+            "location": "/about/release-notes/#new-commands_2", 
+            "text": "SharePoint Online:   spo cdn get  - get Office 365 CDN status  spo cdn origin list  - list Office 365 CDN origins  spo cdn origin remove  - remove Office 365 CDN origin  spo cdn origin set  - set Office 365 CDN origin  spo cdn policy list  - list Office 365 CDN policies  spo cdn policy set  - set Office 365 CDN policy  spo cdn set  - enable/disable Office 365 CDN  spo connect  - connect to a SharePoint Online site  spo disconnect  - disconnect from SharePoint  spo status  - show SharePoint Online connection status  spo storageentity get  - get value of a tenant property  spo storageentity list  - list all tenant properties  spo storageentity remove  - remove a tenant property  spo storageentity set  - set a tenant property", 
+            "title": "New commands"
         }, 
         {
             "location": "/about/license/", 

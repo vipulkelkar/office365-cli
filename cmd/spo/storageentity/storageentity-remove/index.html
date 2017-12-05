@@ -28,7 +28,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.4">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.2.1">
     
     
       
@@ -36,13 +36,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application-709eec9410.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.41c6761c.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.792431c1.css">
       
     
     
-      <script src="../../../../assets/javascripts/modernizr-e826f8942a.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
@@ -87,22 +87,18 @@
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  SharePoint Online (spo)
-                </span>
-              
-                <span class="md-header-nav__parent">
-                  storageentity
-                </span>
-              
+              <span class="md-header-nav__topic">
+                Office 365 CLI
+              </span>
+              <span class="md-header-nav__topic">
+                storageentity remove
+              </span>
             
-            storageentity remove
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
@@ -162,6 +158,9 @@
 </header>
     
     <div class="md-container">
+      
+        
+      
       
         
 
@@ -580,18 +579,54 @@
           
           
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-6" type="checkbox" id="nav-2-1-6">
+    
+    <label class="md-nav__link" for="nav-2-1-6">
+      customaction
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-6">
+        customaction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../customaction/customaction-get/" title="customaction get" class="md-nav__link">
+      customaction get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-6" type="checkbox" id="nav-2-1-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-7" type="checkbox" id="nav-2-1-7" checked>
     
-    <label class="md-nav__link" for="nav-2-1-6">
+    <label class="md-nav__link" for="nav-2-1-7">
       storageentity
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-2-1-6">
+      <label class="md-nav__title" for="nav-2-1-7">
         storageentity
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -889,8 +924,16 @@
 <td>Don't prompt for confirming removal of a tenant property</td>
 </tr>
 <tr>
+<td><code>-o, --output &lt;output&gt;</code></td>
+<td>Output type. <code>json|text</code>. Default <code>text</code></td>
+</tr>
+<tr>
 <td><code>--verbose</code></td>
 <td>Runs command with verbose logging</td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td>Runs command with debug logging</td>
 </tr>
 </tbody>
 </table>
@@ -907,17 +950,16 @@ you will get an error.</p>
 To remove a property, you have to specify the absolute URL of the app catalog site.
 If you specify the URL of a site different than the app catalog, you will get an access denied error.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>Remove the <em>AnalyticsId</em> tenant property. Yields a confirmation prompt before actually removing the property</p>
 <div class="codehilite"><pre><span></span>spo storageentity remove -k AnalyticsId -u https://contoso.sharepoint.com/sites/appcatalog
 </pre></div>
 
 
-<p>remove the AnalyticsId tenant property. Yields a confirmation prompt before actually
-removing the property</p>
+<p>Remove the <em>AnalyticsId</em> tenant property. Suppresses the confirmation prompt</p>
 <div class="codehilite"><pre><span></span>spo storageentity remove -k AnalyticsId --confirm -u https://contoso.sharepoint.com/sites/appcatalog
 </pre></div>
 
 
-<p>remove the AnalyticsId tenant property. Suppresses the confirmation prompt</p>
 <h2 id="more-information">More information<a class="headerlink" href="#more-information" title="Permanent link">&para;</a></h2>
 <ul>
 <li>SharePoint Framework Tenant Properties: <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties">https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties</a></li>
@@ -977,9 +1019,9 @@ removing the property</p>
       <div class="md-footer-copyright">
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="http://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
@@ -991,12 +1033,14 @@ removing the property</p>
       
     </div>
     
-      <script src="../../../../assets/javascripts/application-8e4952e681.js"></script>
+      <script src="../../../../assets/javascripts/application.6cdc17f0.js"></script>
       
       <script>app.initialize({version:"0.17.2",url:{base:"../../../.."}})</script>
       
     
     
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-110480857-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
       
     
   </body>
