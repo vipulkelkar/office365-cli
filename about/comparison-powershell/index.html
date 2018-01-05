@@ -1,0 +1,3413 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.2.6">
+    
+    
+      
+        <title>Comparison to SharePoint PowerShell - Office 365 CLI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.6525f7f6.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.792431c1.css">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    
+      <body data-md-color-primary="red">
+    
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Office 365 CLI" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/office.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Office 365 CLI
+              </span>
+              <span class="md-header-nav__topic">
+                Comparison to SharePoint PowerShell
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="http://github.com/SharePoint/office365-cli/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../cmd/spo/connect/" title="Commands" class="md-tabs__link">
+          Commands
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../concepts/persisting-connection/" title="Concepts" class="md-tabs__link">
+          Concepts
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../why-cli/" title="About" class="md-tabs__link md-tabs__link--active">
+          About
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../images/office.png" width="24" height="24">
+      
+    </span>
+    Office 365 CLI
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="http://github.com/SharePoint/office365-cli/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Commands
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Commands
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      SharePoint Online (spo)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        SharePoint Online (spo)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/connect/" title="connect" class="md-nav__link">
+      connect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/disconnect/" title="disconnect" class="md-nav__link">
+      disconnect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/status/" title="status" class="md-nav__link">
+      status
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-4" type="checkbox" id="nav-2-1-4">
+    
+    <label class="md-nav__link" for="nav-2-1-4">
+      app
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-4">
+        app
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-add/" title="app add" class="md-nav__link">
+      app add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-deploy/" title="app deploy" class="md-nav__link">
+      app deploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-get/" title="app get" class="md-nav__link">
+      app get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-install/" title="app install" class="md-nav__link">
+      app install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-list/" title="app list" class="md-nav__link">
+      app list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-remove/" title="app remove" class="md-nav__link">
+      app remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-retract/" title="app retract" class="md-nav__link">
+      app retract
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-uninstall/" title="app uninstall" class="md-nav__link">
+      app uninstall
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/app/app-upgrade/" title="app upgrade" class="md-nav__link">
+      app upgrade
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-5" type="checkbox" id="nav-2-1-5">
+    
+    <label class="md-nav__link" for="nav-2-1-5">
+      cdn
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-5">
+        cdn
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-get/" title="cdn get" class="md-nav__link">
+      cdn get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-origin-add/" title="cdn origin add" class="md-nav__link">
+      cdn origin add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-origin-list/" title="cdn origin list" class="md-nav__link">
+      cdn origin list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-origin-remove/" title="cdn origin remove" class="md-nav__link">
+      cdn origin remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-policy-list/" title="cdn policy list" class="md-nav__link">
+      cdn policy list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-policy-set/" title="cdn policy set" class="md-nav__link">
+      cdn policy set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/cdn/cdn-set/" title="cdn set" class="md-nav__link">
+      cdn set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-6" type="checkbox" id="nav-2-1-6">
+    
+    <label class="md-nav__link" for="nav-2-1-6">
+      customaction
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-6">
+        customaction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/customaction/customaction-add/" title="customaction add" class="md-nav__link">
+      customaction add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/customaction/customaction-get/" title="customaction get" class="md-nav__link">
+      customaction get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/customaction/customaction-list/" title="customaction list" class="md-nav__link">
+      customaction list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-7" type="checkbox" id="nav-2-1-7">
+    
+    <label class="md-nav__link" for="nav-2-1-7">
+      externaluser
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-7">
+        externaluser
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/externaluser/externaluser-list/" title="externaluser list" class="md-nav__link">
+      externaluser list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-8" type="checkbox" id="nav-2-1-8">
+    
+    <label class="md-nav__link" for="nav-2-1-8">
+      serviceprincipal
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-8">
+        serviceprincipal
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/serviceprincipal/serviceprincipal-grant-list/" title="serviceprincipal grant list" class="md-nav__link">
+      serviceprincipal grant list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/serviceprincipal/serviceprincipal-grant-revoke/" title="serviceprincipal grant revoke" class="md-nav__link">
+      serviceprincipal grant revoke
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-approve/" title="serviceprincipal permissionrequest approve" class="md-nav__link">
+      serviceprincipal permissionrequest approve
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-deny/" title="serviceprincipal permissionrequest deny" class="md-nav__link">
+      serviceprincipal permissionrequest deny
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-list/" title="serviceprincipal permissionrequest list" class="md-nav__link">
+      serviceprincipal permissionrequest list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/serviceprincipal/serviceprincipal-set/" title="serviceprincipal set" class="md-nav__link">
+      serviceprincipal set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-9" type="checkbox" id="nav-2-1-9">
+    
+    <label class="md-nav__link" for="nav-2-1-9">
+      site
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-9">
+        site
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-add/" title="site add" class="md-nav__link">
+      site add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-get/" title="site get" class="md-nav__link">
+      site get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-list/" title="site list" class="md-nav__link">
+      site list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-appcatalog-add/" title="site appcatalog add" class="md-nav__link">
+      site appcatalog add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-appcatalog-remove/" title="site appcatalog remove" class="md-nav__link">
+      site appcatalog remove
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-10" type="checkbox" id="nav-2-1-10">
+    
+    <label class="md-nav__link" for="nav-2-1-10">
+      storageentity
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-10">
+        storageentity
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/storageentity/storageentity-get/" title="storageentity get" class="md-nav__link">
+      storageentity get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/storageentity/storageentity-list/" title="storageentity list" class="md-nav__link">
+      storageentity list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/storageentity/storageentity-remove/" title="storageentity remove" class="md-nav__link">
+      storageentity remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/storageentity/storageentity-set/" title="storageentity set" class="md-nav__link">
+      storageentity set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Azure Active Directory Graph (aad)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        Azure Active Directory Graph (aad)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/connect/" title="connect" class="md-nav__link">
+      connect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/disconnect/" title="disconnect" class="md-nav__link">
+      disconnect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/status/" title="status" class="md-nav__link">
+      status
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2-4" type="checkbox" id="nav-2-2-4">
+    
+    <label class="md-nav__link" for="nav-2-2-4">
+      oauth2grant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-2-4">
+        oauth2grant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/oauth2grant/oauth2grant-add/" title="oauth2grant add" class="md-nav__link">
+      oauth2grant add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/oauth2grant/oauth2grant-list/" title="oauth2grant list" class="md-nav__link">
+      oauth2grant list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/oauth2grant/oauth2grant-remove/" title="oauth2grant remove" class="md-nav__link">
+      oauth2grant remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/oauth2grant/oauth2grant-set/" title="oauth2grant set" class="md-nav__link">
+      oauth2grant set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2-5" type="checkbox" id="nav-2-2-5">
+    
+    <label class="md-nav__link" for="nav-2-2-5">
+      service principal (sp)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-2-5">
+        service principal (sp)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/aad/sp/sp-get/" title="sp get" class="md-nav__link">
+      sp get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Concepts
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Concepts
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../concepts/persisting-connection/" title="Persisting connection" class="md-nav__link">
+      Persisting connection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../concepts/authorization-tokens/" title="Authorization and access tokens" class="md-nav__link">
+      Authorization and access tokens
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../concepts/completion/" title="Command completion" class="md-nav__link">
+      Command completion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../concepts/communicating-o365/" title="Communication with Office 365" class="md-nav__link">
+      Communication with Office 365
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../why-cli/" title="Why this CLI" class="md-nav__link">
+      Why this CLI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+    <a href="./" title="Comparison to SharePoint PowerShell" class="md-nav__link md-nav__link--active">
+      Comparison to SharePoint PowerShell
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../release-notes/" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../license/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="http://github.com/SharePoint/office365-cli/blob/master/docs/manual/docs/about/comparison-powershell.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="comparison-to-sharepoint-powershell">Comparison to SharePoint PowerShell<a class="headerlink" href="#comparison-to-sharepoint-powershell" title="Permanent link">&para;</a></h1>
+<p>Following table lists the different Office 365 CLI commands and how they map to SharePoint Online Management Shell and PnP PowerShell cmdlets.</p>
+<table>
+<thead>
+<tr>
+<th>PowerShell Cmdlet</th>
+<th>Source</th>
+<th>Office 365 CLI command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add-SPOGeoAdministrator</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-SPOSiteCollectionAppCatalog</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/site/site-appcatalog-add/">spo site appcatalog add</a></td>
+</tr>
+<tr>
+<td>Add-SPOSiteDesign</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-SPOSiteScript</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-SPOTenantCdnOrigin</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-origin-add/">spo cdn origin add</a></td>
+</tr>
+<tr>
+<td>Add-SPOTheme</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-SPOUser</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Approve-SPOTenantServicePrincipalPermissionRequest</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-approve/">spo serviceprincipal permissionrequest approve</a></td>
+</tr>
+<tr>
+<td>Connect-SPOHubSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Connect-SPOService</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/connect/">spo connect</a></td>
+</tr>
+<tr>
+<td>ConvertTo-SPOMigrationEncryptedPackage</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>ConvertTo-SPOMigrationTargetedPackage</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Deny-SPOTenantServicePrincipalPermissionRequest</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-deny/">spo serviceprincipal permissionrequest deny</a></td>
+</tr>
+<tr>
+<td>Disable-SPOTenantServicePrincipal</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-set/">spo serviceprincipal set</a></td>
+</tr>
+<tr>
+<td>Disconnect-SPOHubSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Disconnect-SPOService</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/disconnect/">spo disconnect</a></td>
+</tr>
+<tr>
+<td>Enable-SPOTenantServicePrincipal</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-set/">spo serviceprincipal set</a></td>
+</tr>
+<tr>
+<td>Get-SPOAppErrors</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOAppInfo</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOBrowserIdleSignOut</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOCrossGeoMovedUsers</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOCrossGeoMoveReport</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOCrossGeoUsers</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPODataEncryptionPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPODeletedSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOExternalUser</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/externaluser/externaluser-list/">spo externaluser list</a></td>
+</tr>
+<tr>
+<td>Get-SPOGeoAdministrator</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOGeoMoveCompatibilityStatus</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOGeoMoveCrossCompatibilityStatus</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOGeoStorageQuota</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOHideDefaultThemes</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOHubSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOMigrationJobProgress</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOMigrationJobStatus</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOMultiGeoExperience</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOPublicCdnOrigins</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSiteContentMoveState</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSiteDataEncryptionPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSiteDesign</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSiteDesignRights</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSiteGroup</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOSiteScript</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOStorageEntity</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/storageentity/storageentity-get/">spo storageentity get</a>, <a href="../../cmd/spo/storageentity/storageentity-list/">spo storageentity list</a></td>
+</tr>
+<tr>
+<td>Get-SPOTenant</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOTenantCdnEnabled</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-get/">spo cdn get</a></td>
+</tr>
+<tr>
+<td>Get-SPOTenantCdnOrigins</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-origin-list/">spo cdn origin list</a></td>
+</tr>
+<tr>
+<td>Get-SPOTenantCdnPolicies</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-policy-list/">spo cdn policy list</a></td>
+</tr>
+<tr>
+<td>Get-SPOTenantContentTypeReplicationParameters</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOTenantLogEntry</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOTenantLogLastAvailableTimeInUtc</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOTenantServicePrincipalPermissionGrants</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-grant-list/">spo serviceprincipal grant list</a></td>
+</tr>
+<tr>
+<td>Get-SPOTenantServicePrincipalPermissionRequests</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-list/">spo serviceprincipal permissionrequest list</a></td>
+</tr>
+<tr>
+<td>Get-SPOTenantSyncClientRestriction</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOTenantTaxonomyReplicationParameters</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOTheme</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOUser</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOUserAndContentMoveState</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOUserOneDriveLocation</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-SPOWebTemplate</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Grant-SPOHubSiteRights</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Grant-SPOSiteDesignRights</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Invoke-SPOMigrationEncryptUploadSubmit</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>New-SPOMigrationEncryptionParameters</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>New-SPOMigrationPackage</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>New-SPOPublicCdnOrigin</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>New-SPOSdnProvider</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>New-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/site/site-add/">spo site add</a></td>
+</tr>
+<tr>
+<td>New-SPOSiteGroup</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Register-SPODataEncryptionPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Register-SPOHubSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPODeletedSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOExternalUser</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOGeoAdministrator</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOMigrationJob</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOPublicCdnOrigin</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOSdnProvider</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOSiteCollectionAppCatalog</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/site/site-appcatalog-remove/">spo site appcatalog remove</a></td>
+</tr>
+<tr>
+<td>Remove-SPOSiteCollectionAppCatalogById</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOSiteDesign</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOSiteGroup</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOSiteScript</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOStorageEntity</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/storageentity/storageentity-remove/">spo storageentity remove</a></td>
+</tr>
+<tr>
+<td>Remove-SPOTenantCdnOrigin</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-origin-remove/">spo cdn origin remove</a></td>
+</tr>
+<tr>
+<td>Remove-SPOTenantSyncClientRestriction</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOTheme</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-SPOUser</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Repair-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Request-SPOPersonalSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Request-SPOUpgradeEvaluationSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Restore-SPODataEncryptionPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Restore-SPODeletedSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Revoke-SPOHubSiteRights</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Revoke-SPOSiteDesignRights</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Revoke-SPOTenantServicePrincipalPermission</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-grant-revoke/">spo serviceprincipal grant revoke</a></td>
+</tr>
+<tr>
+<td>Revoke-SPOUserSession</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOBrowserIdleSignOut</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOGeoStorageQuota</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOHideDefaultThemes</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOHubSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOMigrationPackageAzureSource</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOMultiGeoExperience</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOSiteGroup</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOSiteOffice365Group</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOStorageEntity</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/storageentity/storageentity-set/">spo storageentity set</a></td>
+</tr>
+<tr>
+<td>Set-SPOTenant</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOTenantCdnEnabled</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-set/">spo cdn set</a></td>
+</tr>
+<tr>
+<td>Set-SPOTenantCdnPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/cdn/cdn-policy-set/">spo cdn policy set</a></td>
+</tr>
+<tr>
+<td>Set-SPOTenantContentTypeReplicationParameters</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOTenantSyncClientRestriction</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOTenantTaxonomyReplicationParameters</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-SPOUser</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Start-SPOSiteContentMove</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Start-SPOUserAndContentMove</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Stop-SPOUserAndContentMove</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Submit-SPOMigrationJob</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Test-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Unregister-SPOHubSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Update-SPODataEncryptionPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Upgrade-SPOSite</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-add/">spo app add</a></td>
+</tr>
+<tr>
+<td>Add-PnPClientSidePage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPClientSidePageSection</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPClientSideText</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPClientSideWebPart</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPContentType</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPContentTypeToDocumentSet</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPContentTypeToList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPCustomAction</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/customaction/customaction-add/">spo customaction add</a></td>
+</tr>
+<tr>
+<td>Add-PnPDataRowsToProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPDocumentSet</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPEventReceiver</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPField</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPFieldFromXml</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPFieldToContentType</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPFileToProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPHtmlPublishingPageLayout</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPIndexedProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPJavaScriptBlock</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPJavaScriptLink</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPListFoldersToProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPListItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPMasterPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPNavigationNode</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPOffice365GroupToSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPPublishingImageRendition</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPPublishingPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPPublishingPageLayout</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPSiteClassification</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPSiteCollectionAdmin</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPSiteDesign</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPSiteScript</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPTaxonomyField</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPUserToGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPView</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPWebhookSubscription</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPWebPartToWebPartPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPWebPartToWikiPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPWikiPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPWorkflowDefinition</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Add-PnPWorkflowSubscription</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Apply-PnPProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Clear-PnPListItemAsRecord</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Clear-PnPRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Clear-PnPTenantRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Connect-PnPMicrosoftGraph</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Connect-PnPOnline</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/connect/">spo connect</a></td>
+</tr>
+<tr>
+<td>Convert-PnPFolderToProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Convert-PnPProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Copy-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Copy-PnPItemProxy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Disable-PnPFeature</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Disable-PnPInPlaceRecordsManagementForSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Disable-PnPResponsiveUI</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Disable-PnPSiteClassification</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Disconnect-PnPOnline</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/disconnect/">spo disconnect</a></td>
+</tr>
+<tr>
+<td>Enable-PnPFeature</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Enable-PnPInPlaceRecordsManagementForSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Enable-PnPResponsiveUI</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Enable-PnPSiteClassification</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Ensure-PnPFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Execute-PnPQuery</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Export-PnPTaxonomy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Export-PnPTermGroupToXml</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Find-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPAccessToken</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-get/">spo app get</a>, <a href="../../cmd/spo/app/app-list/">spo app list</a></td>
+</tr>
+<tr>
+<td>Get-PnPAppAuthAccessToken</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPAppInstance</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPAuditing</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPAuthenticationRealm</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPAvailableClientSideComponents</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPAzureADManifestKeyCredentials</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPClientSideComponent</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPClientSidePage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPConnection</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPContentType</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPContentTypePublishingHubUrl</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPContext</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPCustomAction</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/customaction/customaction-get/">spo customaction get</a>, <a href="../../cmd/spo/customaction/customaction-list/">spo customaction list</a></td>
+</tr>
+<tr>
+<td>Get-PnPDefaultColumnValues</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPDocumentSetTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPEventReceiver</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPFeature</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPField</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPFolderItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPGroupMembers</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPGroupPermissions</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPHealthScore</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPHomePage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPIndexedPropertyKeys</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPJavaScriptLink</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPListItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPMasterPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPPropertyBag</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPProvisioningTemplateFromGallery</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPPublishingImageRendition</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPRequestAccessEmails</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSearchConfiguration</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/site/site-get/">spo site get</a>, <a href="../../cmd/spo/site/site-list/">spo site list</a></td>
+</tr>
+<tr>
+<td>Get-PnPSiteClassification</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteClosure</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteCollectionAdmin</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteCollectionTermStore</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteDesign</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteDesignRights</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSitePolicy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteScript</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSiteSearchQueryResults</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPStorageEntity</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/storageentity/storageentity-get/">spo storageentity get</a>, <a href="../../cmd/spo/storageentity/storageentity-list/">spo storageentity list</a></td>
+</tr>
+<tr>
+<td>Get-PnPStoredCredential</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPSubWebs</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTaxonomyItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTaxonomySession</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTenantRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTenantSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTerm</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTermGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTermSet</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTheme</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPTimeZoneId</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPUnifiedGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPUser</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPUserProfileProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPView</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWeb</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWebhookSubscriptions</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWebPart</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWebPartProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWebPartXml</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWebTemplates</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWikiPageContent</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWorkflowDefinition</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Get-PnPWorkflowSubscription</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Grant-PnPSiteDesignRights</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Import-PnPAppPackage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Import-PnPTaxonomy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Import-PnPTermGroupFromXml</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Import-PnPTermSet</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Install-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-install/">spo app install</a></td>
+</tr>
+<tr>
+<td>Install-PnPSolution</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Invoke-PnPWebAction</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Load-PnPProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Measure-PnPList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Measure-PnPResponseTime</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Measure-PnPWeb</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Move-PnPClientSideComponent</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Move-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Move-PnPFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Move-PnPItemProxy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Move-PnPListItemToRecycleBin</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Move-PnPRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPExtensbilityHandlerObject</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPPersonalSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPProvisioningTemplateFromFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/site/site-add/">spo site add</a></td>
+</tr>
+<tr>
+<td>New-PnPTenantSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPTerm</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPTermGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPTermSet</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPUnifiedGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPUser</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>New-PnPWeb</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Publish-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-deploy/">spo app deploy</a></td>
+</tr>
+<tr>
+<td>Remove-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-remove/">spo app remove</a></td>
+</tr>
+<tr>
+<td>Remove-PnPClientSideComponent</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPClientSidePage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPContentType</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPContentTypeFromDocumentSet</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPContentTypeFromList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPCustomAction</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPEventReceiver</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPField</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPFieldFromContentType</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPFileFromProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPIndexedProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPJavaScriptLink</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPListItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPNavigationNode</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPPropertyBagValue</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPPublishingImageRendition</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPSiteClassification</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPSiteCollectionAdmin</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPSiteDesign</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPSiteScript</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPStorageEntity</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/storageentity/storageentity-remove/">spo storageentity remove</a></td>
+</tr>
+<tr>
+<td>Remove-PnPTaxonomyItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPTenantSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPTermGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPUnifiedGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPUser</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPUserFromGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPView</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPWeb</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPWebhookSubscription</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPWebPart</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPWikiPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPWorkflowDefinition</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove-PnPWorkflowSubscription</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Rename-PnPFile</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Rename-PnPFolder</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Request-PnPReIndexList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Request-PnPReIndexWeb</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Restore-PnPRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Restore-PnPTenantRecycleBinItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Resume-PnPWorkflowInstance</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Revoke-PnPSiteDesignRights</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Save-PnPProvisioningTemplate</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Send-PnPMail</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPAppSideLoading</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPAuditing</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPAvailablePageLayouts</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPClientSidePage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPClientSideText</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPClientSideWebPart</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPContext</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPDefaultColumnValues</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPDefaultContentTypeToList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPDefaultPageLayout</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPDocumentSetField</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPField</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPFileCheckedIn</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPFileCheckedOut</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPGroupPermissions</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPHomePage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPIndexedProperties</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPInPlaceRecordsManagement</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPList</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPListItem</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPListItemAsRecord</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPListItemPermission</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPListPermission</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPMasterPage</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPMinimalDownloadStrategy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPPropertyBagValue</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPProvisioningTemplateMetadata</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPRequestAccessEmails</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPSearchConfiguration</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPSiteClosure</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPSitePolicy</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPStorageEntity</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/storageentity/storageentity-set/">spo storageentity set</a></td>
+</tr>
+<tr>
+<td>Set-PnPTaxonomyFieldValue</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPTenantSite</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPTheme</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPTraceLog</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPUnifiedGroup</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPUserProfileProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPView</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPWeb</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPWebhookSubscription</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPWebPartProperty</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPWebPermission</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-PnPWikiPageContent</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Stop-PnPWorkflowInstance</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Submit-PnPSearchQuery</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Test-PnPListItemIsRecord</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Uninstall-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-uninstall/">spo app uninstall</a></td>
+</tr>
+<tr>
+<td>Uninstall-PnPAppInstance</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Uninstall-PnPSolution</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+<tr>
+<td>Unpublish-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-retract/">spo app retract</a></td>
+</tr>
+<tr>
+<td>Update-PnPApp</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/app/app-upgrade/">spo app upgrade</a></td>
+</tr>
+<tr>
+<td>Update-PnPSiteClassification</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../why-cli/" title="Why this CLI" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Why this CLI
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../release-notes/" title="Release notes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Release notes
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.cae2244d.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-110480857-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      
+    
+  </body>
+</html>
