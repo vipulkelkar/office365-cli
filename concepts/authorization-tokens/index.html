@@ -19,6 +19,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -28,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.5.5">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
     
     
       
@@ -36,15 +40,16 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.aa3de92b.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.78aab2dc.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.792431c1.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
       <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -55,7 +60,6 @@
     
   </head>
   
-  
     
     
     <body dir="ltr" data-md-color-primary="red" data-md-color-accent="">
@@ -64,7 +68,24 @@
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
@@ -724,6 +745,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/customaction/customaction-clear/" title="customaction clear" class="md-nav__link">
+      customaction clear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/customaction/customaction-get/" title="customaction get" class="md-nav__link">
       customaction get
     </a>
@@ -817,10 +850,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-8" type="checkbox" id="nav-3-1-8">
     
     <label class="md-nav__link" for="nav-3-1-8">
-      hubsite
+      file
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
       <label class="md-nav__title" for="nav-3-1-8">
+        file
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/file/file-list/" title="file list" class="md-nav__link">
+      file list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-9" type="checkbox" id="nav-3-1-9">
+    
+    <label class="md-nav__link" for="nav-3-1-9">
+      hubsite
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-9">
         hubsite
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -946,17 +1015,29 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-9" type="checkbox" id="nav-3-1-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-10" type="checkbox" id="nav-3-1-10">
     
-    <label class="md-nav__link" for="nav-3-1-9">
+    <label class="md-nav__link" for="nav-3-1-10">
       list
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-9">
+      <label class="md-nav__title" for="nav-3-1-10">
         list
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/list/list-add/" title="list add" class="md-nav__link">
+      list add
+    </a>
+  </li>
+
         
           
           
@@ -982,6 +1063,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/list/list-remove/" title="list remove" class="md-nav__link">
+      list remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/list/list-set/" title="list set" class="md-nav__link">
+      list set
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -994,13 +1099,61 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-10" type="checkbox" id="nav-3-1-10">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-11" type="checkbox" id="nav-3-1-11">
     
-    <label class="md-nav__link" for="nav-3-1-10">
+    <label class="md-nav__link" for="nav-3-1-11">
+      propertybag
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-11">
+        propertybag
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/propertybag/propertybag-get/" title="propertybag get" class="md-nav__link">
+      propertybag get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/propertybag/propertybag-list/" title="propertybag list" class="md-nav__link">
+      propertybag list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-12" type="checkbox" id="nav-3-1-12">
+    
+    <label class="md-nav__link" for="nav-3-1-12">
       serviceprincipal
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-10">
+      <label class="md-nav__title" for="nav-3-1-12">
         serviceprincipal
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1090,13 +1243,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-11" type="checkbox" id="nav-3-1-11">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-13" type="checkbox" id="nav-3-1-13">
     
-    <label class="md-nav__link" for="nav-3-1-11">
+    <label class="md-nav__link" for="nav-3-1-13">
       site
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-11">
+      <label class="md-nav__title" for="nav-3-1-13">
         site
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1144,6 +1297,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-set/" title="site set" class="md-nav__link">
+      site set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/site/site-appcatalog-add/" title="site appcatalog add" class="md-nav__link">
       site appcatalog add
     </a>
@@ -1168,8 +1333,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-classic-add/" title="site classic add" class="md-nav__link">
+      site classic add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/site/site-classic-list/" title="site classic list" class="md-nav__link">
       site classic list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-classic-set/" title="site classic set" class="md-nav__link">
+      site classic set
     </a>
   </li>
 
@@ -1186,13 +1375,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-12" type="checkbox" id="nav-3-1-12">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-14" type="checkbox" id="nav-3-1-14">
     
-    <label class="md-nav__link" for="nav-3-1-12">
+    <label class="md-nav__link" for="nav-3-1-14">
       sitedesign
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-12">
+      <label class="md-nav__title" for="nav-3-1-14">
         sitedesign
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1252,6 +1441,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/sitedesign/sitedesign-set/" title="sitedesign set" class="md-nav__link">
+      sitedesign set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/sitedesign/sitedesign-rights-grant/" title="sitedesign rights grant" class="md-nav__link">
       sitedesign rights grant
     </a>
@@ -1294,13 +1495,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-13" type="checkbox" id="nav-3-1-13">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-15" type="checkbox" id="nav-3-1-15">
     
-    <label class="md-nav__link" for="nav-3-1-13">
+    <label class="md-nav__link" for="nav-3-1-15">
       sitescript
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-13">
+      <label class="md-nav__title" for="nav-3-1-15">
         sitescript
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1378,13 +1579,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-14" type="checkbox" id="nav-3-1-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-16" type="checkbox" id="nav-3-1-16">
     
-    <label class="md-nav__link" for="nav-3-1-14">
+    <label class="md-nav__link" for="nav-3-1-16">
       storageentity
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-14">
+      <label class="md-nav__title" for="nav-3-1-16">
         storageentity
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1443,6 +1644,102 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-17" type="checkbox" id="nav-3-1-17">
+    
+    <label class="md-nav__link" for="nav-3-1-17">
+      tenant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-17">
+        tenant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/tenant/tenant-appcatalogurl-get/" title="tenant appcatalogurl get" class="md-nav__link">
+      tenant appcatalogurl get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-18" type="checkbox" id="nav-3-1-18">
+    
+    <label class="md-nav__link" for="nav-3-1-18">
+      web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-18">
+        web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/web/web-add/" title="web add" class="md-nav__link">
+      web add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/web/web-list/" title="web list" class="md-nav__link">
+      web list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/web/web-remove/" title="web remove" class="md-nav__link">
+      web remove
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1458,10 +1755,142 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
     
     <label class="md-nav__link" for="nav-3-2">
-      Azure Active Directory Graph (aad)
+      Microsoft Graph (graph)
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-3-2">
+        Microsoft Graph (graph)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/connect/" title="connect" class="md-nav__link">
+      connect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/disconnect/" title="disconnect" class="md-nav__link">
+      disconnect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/status/" title="status" class="md-nav__link">
+      status
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
+    
+    <label class="md-nav__link" for="nav-3-2-4">
+      o365group
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-4">
+        o365group
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-add/" title="o365group add" class="md-nav__link">
+      o365group add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-get/" title="o365group get" class="md-nav__link">
+      o365group get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-list/" title="o365group list" class="md-nav__link">
+      o365group list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-set/" title="o365group set" class="md-nav__link">
+      o365group set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Azure Active Directory Graph (aad)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
         Azure Active Directory Graph (aad)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1510,13 +1939,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-4" type="checkbox" id="nav-3-3-4">
     
-    <label class="md-nav__link" for="nav-3-2-4">
+    <label class="md-nav__link" for="nav-3-3-4">
       oauth2grant
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-4">
+      <label class="md-nav__title" for="nav-3-3-4">
         oauth2grant
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1582,13 +2011,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-5" type="checkbox" id="nav-3-2-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-5" type="checkbox" id="nav-3-3-5">
     
-    <label class="md-nav__link" for="nav-3-2-5">
+    <label class="md-nav__link" for="nav-3-3-5">
       service principal (sp)
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-5">
+      <label class="md-nav__title" for="nav-3-3-5">
         service principal (sp)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1698,6 +2127,26 @@
     Authorization in the Office 365 CLI
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-ad-application-used-by-the-office-365-cli" title="Azure AD application used by the Office 365 CLI" class="md-nav__link">
+    Azure AD application used by the Office 365 CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-and-refresh-tokens-in-the-office-365-cli" title="Access and refresh tokens in the Office 365 CLI" class="md-nav__link">
+    Access and refresh tokens in the Office 365 CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1747,6 +2196,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -1890,6 +2341,26 @@
     Authorization in the Office 365 CLI
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-ad-application-used-by-the-office-365-cli" title="Azure AD application used by the Office 365 CLI" class="md-nav__link">
+    Azure AD application used by the Office 365 CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-and-refresh-tokens-in-the-office-365-cli" title="Access and refresh tokens in the Office 365 CLI" class="md-nav__link">
+    Access and refresh tokens in the Office 365 CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1942,6 +2413,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -1972,6 +2445,40 @@
 </ul>
 <h2 id="authorization-in-the-office-365-cli">Authorization in the Office 365 CLI<a class="headerlink" href="#authorization-in-the-office-365-cli" title="Permanent link">&para;</a></h2>
 <p>There are a number of ways in which you can authenticate and authorize with Office 365. The Office 365 CLI uses the OAuth protocol to authorize with Office 365 and its services. OAuth flows in Office 365 are facilitated by Azure Active Directory.</p>
+<h3 id="azure-ad-application-used-by-the-office-365-cli">Azure AD application used by the Office 365 CLI<a class="headerlink" href="#azure-ad-application-used-by-the-office-365-cli" title="Permanent link">&para;</a></h3>
+<p>Office 365 CLI gets access to Office 365 through a custom Azure AD application named <em>PnP Office 365 Management Shell</em>. If you don't want to consent this application in your tenant, you can use a different application instead.</p>
+<p>When specifying a custom Azure AD application to be used by the Office 365 CLI, you can either choose to use one application for all Office 365 services or a separate application for each service. To use one Azure AD application for all Office 365 CLI commands, set the <code>OFFICE365CLI_AADAPPID</code> environment variable to the ID of your Azure AD application. If you want to use a different Azure AD application for each Office 365 service use the following environment variables:</p>
+<ul>
+<li><code>OFFICE365CLI_AADAADAPPID</code> - for the ID of the Azure AD application to communicate with Azure AD Graph</li>
+<li><code>OFFICE365CLI_AADGRAPHAPPID</code> - for the ID of the Azure AD application to communicate with the Microsoft Graph</li>
+<li><code>OFFICE365CLI_AADSPOAPPID</code> - for the ID of the Azure AD application to communicate with SharePoint Online</li>
+</ul>
+<p>Office 365 CLI requires the following permissions to Office 365 services:</p>
+<ul>
+<li>Office 365 SharePoint Online (Microsoft.SharePoint)<ul>
+<li>Have full control of all site collections</li>
+<li>Read user profiles</li>
+<li>Read and write managed metadata</li>
+</ul>
+</li>
+<li>Microsoft Graph<ul>
+<li>Invite guest users to the organization</li>
+<li>Read and write all groups</li>
+<li>Read and write directory data</li>
+<li>Access directory as the signed in user</li>
+<li>Read and write identity providers</li>
+</ul>
+</li>
+<li>Windows Azure Active Directory<ul>
+<li>Access the directory as the signed-in user</li>
+</ul>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>After changing the ID of the Azure AD application used by the Office 365 CLI refresh the existing connections to Office 365 using the corresponding <code>&lt;service&gt; connect</code> command. If you try to use the existing connection, Office 365 CLI will fail when trying to refresh the existing access token.</p>
+</div>
+<h3 id="access-and-refresh-tokens-in-the-office-365-cli">Access and refresh tokens in the Office 365 CLI<a class="headerlink" href="#access-and-refresh-tokens-in-the-office-365-cli" title="Permanent link">&para;</a></h3>
 <p>After completing the OAuth flow, the CLI receives from Azure Active Directory a refresh- and an access token. Each web request to Office 365 APIs contains the access token which authorizes the Office 365 CLI to execute the particular operation. When the access token expires, the CLI uses the refresh token to obtain a new access token. When the refresh token expires, the user has to reconnect to Office 365 to obtain a new refresh token.</p>
 <h2 id="services-and-commands">Services and commands<a class="headerlink" href="#services-and-commands" title="Permanent link">&para;</a></h2>
 <p>Each command in the Office 365 CLI belongs to a service, for example the <a href="../../cmd/spo/site/site-add/">spo site add</a> command, which creates a new modern site, belongs to the SharePoint Online service, while the <a href="../../cmd/aad/sp/sp-get/">aad sp get</a> command, which lists Azure Active Directory service principals, belongs to the Azure Active Directory Graph service. Each service in Office 365 is a different Azure Active Directory authorization resource and requires a separate access token. When working with the CLI, you can be simultaneously connected to multiple services. Each command in the CLI knows which Office 365 service it communicates with and for which resource it should have a valid access token.</p>
@@ -2073,7 +2580,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.f041762f.js"></script>
+      <script src="../../assets/javascripts/application.02434462.js"></script>
       
       <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       

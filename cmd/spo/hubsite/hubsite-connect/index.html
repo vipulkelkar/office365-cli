@@ -19,6 +19,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -28,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.5.5">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
     
     
       
@@ -36,15 +40,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.aa3de92b.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.78aab2dc.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.792431c1.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
       <script src="../../../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -55,7 +60,6 @@
     
   </head>
   
-  
     
     
     <body dir="ltr" data-md-color-primary="red" data-md-color-accent="">
@@ -64,7 +68,24 @@
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
@@ -728,6 +749,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../customaction/customaction-clear/" title="customaction clear" class="md-nav__link">
+      customaction clear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../customaction/customaction-get/" title="customaction get" class="md-nav__link">
       customaction get
     </a>
@@ -815,18 +848,54 @@
           
           
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-8" type="checkbox" id="nav-3-1-8">
+    
+    <label class="md-nav__link" for="nav-3-1-8">
+      file
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-8">
+        file
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../file/file-list/" title="file list" class="md-nav__link">
+      file list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-8" type="checkbox" id="nav-3-1-8" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-9" type="checkbox" id="nav-3-1-9" checked>
     
-    <label class="md-nav__link" for="nav-3-1-8">
+    <label class="md-nav__link" for="nav-3-1-9">
       hubsite
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-8">
+      <label class="md-nav__title" for="nav-3-1-9">
         hubsite
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -898,6 +967,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -1016,17 +1087,29 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-9" type="checkbox" id="nav-3-1-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-10" type="checkbox" id="nav-3-1-10">
     
-    <label class="md-nav__link" for="nav-3-1-9">
+    <label class="md-nav__link" for="nav-3-1-10">
       list
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-9">
+      <label class="md-nav__title" for="nav-3-1-10">
         list
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../list/list-add/" title="list add" class="md-nav__link">
+      list add
+    </a>
+  </li>
+
         
           
           
@@ -1052,6 +1135,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../list/list-remove/" title="list remove" class="md-nav__link">
+      list remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../list/list-set/" title="list set" class="md-nav__link">
+      list set
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1064,13 +1171,61 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-10" type="checkbox" id="nav-3-1-10">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-11" type="checkbox" id="nav-3-1-11">
     
-    <label class="md-nav__link" for="nav-3-1-10">
+    <label class="md-nav__link" for="nav-3-1-11">
+      propertybag
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-11">
+        propertybag
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../propertybag/propertybag-get/" title="propertybag get" class="md-nav__link">
+      propertybag get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../propertybag/propertybag-list/" title="propertybag list" class="md-nav__link">
+      propertybag list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-12" type="checkbox" id="nav-3-1-12">
+    
+    <label class="md-nav__link" for="nav-3-1-12">
       serviceprincipal
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-10">
+      <label class="md-nav__title" for="nav-3-1-12">
         serviceprincipal
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1160,13 +1315,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-11" type="checkbox" id="nav-3-1-11">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-13" type="checkbox" id="nav-3-1-13">
     
-    <label class="md-nav__link" for="nav-3-1-11">
+    <label class="md-nav__link" for="nav-3-1-13">
       site
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-11">
+      <label class="md-nav__title" for="nav-3-1-13">
         site
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1214,6 +1369,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../site/site-set/" title="site set" class="md-nav__link">
+      site set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../site/site-appcatalog-add/" title="site appcatalog add" class="md-nav__link">
       site appcatalog add
     </a>
@@ -1238,8 +1405,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../../site/site-classic-add/" title="site classic add" class="md-nav__link">
+      site classic add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../site/site-classic-list/" title="site classic list" class="md-nav__link">
       site classic list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../site/site-classic-set/" title="site classic set" class="md-nav__link">
+      site classic set
     </a>
   </li>
 
@@ -1256,13 +1447,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-12" type="checkbox" id="nav-3-1-12">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-14" type="checkbox" id="nav-3-1-14">
     
-    <label class="md-nav__link" for="nav-3-1-12">
+    <label class="md-nav__link" for="nav-3-1-14">
       sitedesign
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-12">
+      <label class="md-nav__title" for="nav-3-1-14">
         sitedesign
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1322,6 +1513,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../sitedesign/sitedesign-set/" title="sitedesign set" class="md-nav__link">
+      sitedesign set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../sitedesign/sitedesign-rights-grant/" title="sitedesign rights grant" class="md-nav__link">
       sitedesign rights grant
     </a>
@@ -1364,13 +1567,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-13" type="checkbox" id="nav-3-1-13">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-15" type="checkbox" id="nav-3-1-15">
     
-    <label class="md-nav__link" for="nav-3-1-13">
+    <label class="md-nav__link" for="nav-3-1-15">
       sitescript
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-13">
+      <label class="md-nav__title" for="nav-3-1-15">
         sitescript
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1448,13 +1651,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-14" type="checkbox" id="nav-3-1-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-16" type="checkbox" id="nav-3-1-16">
     
-    <label class="md-nav__link" for="nav-3-1-14">
+    <label class="md-nav__link" for="nav-3-1-16">
       storageentity
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-14">
+      <label class="md-nav__title" for="nav-3-1-16">
         storageentity
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1513,6 +1716,102 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-17" type="checkbox" id="nav-3-1-17">
+    
+    <label class="md-nav__link" for="nav-3-1-17">
+      tenant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-17">
+        tenant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tenant/tenant-appcatalogurl-get/" title="tenant appcatalogurl get" class="md-nav__link">
+      tenant appcatalogurl get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-18" type="checkbox" id="nav-3-1-18">
+    
+    <label class="md-nav__link" for="nav-3-1-18">
+      web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-18">
+        web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/web-add/" title="web add" class="md-nav__link">
+      web add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/web-list/" title="web list" class="md-nav__link">
+      web list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/web-remove/" title="web remove" class="md-nav__link">
+      web remove
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1528,10 +1827,142 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
     
     <label class="md-nav__link" for="nav-3-2">
-      Azure Active Directory Graph (aad)
+      Microsoft Graph (graph)
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-3-2">
+        Microsoft Graph (graph)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/connect/" title="connect" class="md-nav__link">
+      connect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/disconnect/" title="disconnect" class="md-nav__link">
+      disconnect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/status/" title="status" class="md-nav__link">
+      status
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
+    
+    <label class="md-nav__link" for="nav-3-2-4">
+      o365group
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-4">
+        o365group
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/o365group/o365group-add/" title="o365group add" class="md-nav__link">
+      o365group add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/o365group/o365group-get/" title="o365group get" class="md-nav__link">
+      o365group get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/o365group/o365group-list/" title="o365group list" class="md-nav__link">
+      o365group list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/o365group/o365group-set/" title="o365group set" class="md-nav__link">
+      o365group set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Azure Active Directory Graph (aad)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
         Azure Active Directory Graph (aad)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1580,13 +2011,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-4" type="checkbox" id="nav-3-3-4">
     
-    <label class="md-nav__link" for="nav-3-2-4">
+    <label class="md-nav__link" for="nav-3-3-4">
       oauth2grant
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-4">
+      <label class="md-nav__title" for="nav-3-3-4">
         oauth2grant
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1652,13 +2083,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-5" type="checkbox" id="nav-3-2-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-5" type="checkbox" id="nav-3-3-5">
     
-    <label class="md-nav__link" for="nav-3-2-5">
+    <label class="md-nav__link" for="nav-3-3-5">
       service principal (sp)
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-5">
+      <label class="md-nav__title" for="nav-3-3-5">
         service principal (sp)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1892,6 +2323,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -1989,7 +2422,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../externaluser/externaluser-list/" title="externaluser list" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../file/file-list/" title="file list" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1998,7 +2431,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                externaluser list
+                file list
               </span>
             </div>
           </a>
@@ -2052,7 +2485,7 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.f041762f.js"></script>
+      <script src="../../../../assets/javascripts/application.02434462.js"></script>
       
       <script>app.initialize({version:"0.17.2",url:{base:"../../../.."}})</script>
       

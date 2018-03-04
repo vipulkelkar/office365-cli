@@ -19,6 +19,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -28,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.5.5">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
     
     
       
@@ -36,15 +40,16 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.aa3de92b.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.78aab2dc.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.792431c1.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
       <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -55,7 +60,6 @@
     
   </head>
   
-  
     
     
     <body dir="ltr" data-md-color-primary="red" data-md-color-accent="">
@@ -64,7 +68,24 @@
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
@@ -724,6 +745,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/customaction/customaction-clear/" title="customaction clear" class="md-nav__link">
+      customaction clear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/customaction/customaction-get/" title="customaction get" class="md-nav__link">
       customaction get
     </a>
@@ -817,10 +850,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-8" type="checkbox" id="nav-3-1-8">
     
     <label class="md-nav__link" for="nav-3-1-8">
-      hubsite
+      file
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
       <label class="md-nav__title" for="nav-3-1-8">
+        file
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/file/file-list/" title="file list" class="md-nav__link">
+      file list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-9" type="checkbox" id="nav-3-1-9">
+    
+    <label class="md-nav__link" for="nav-3-1-9">
+      hubsite
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-9">
         hubsite
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -946,17 +1015,29 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-9" type="checkbox" id="nav-3-1-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-10" type="checkbox" id="nav-3-1-10">
     
-    <label class="md-nav__link" for="nav-3-1-9">
+    <label class="md-nav__link" for="nav-3-1-10">
       list
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-9">
+      <label class="md-nav__title" for="nav-3-1-10">
         list
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/list/list-add/" title="list add" class="md-nav__link">
+      list add
+    </a>
+  </li>
+
         
           
           
@@ -982,6 +1063,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/list/list-remove/" title="list remove" class="md-nav__link">
+      list remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/list/list-set/" title="list set" class="md-nav__link">
+      list set
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -994,13 +1099,61 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-10" type="checkbox" id="nav-3-1-10">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-11" type="checkbox" id="nav-3-1-11">
     
-    <label class="md-nav__link" for="nav-3-1-10">
+    <label class="md-nav__link" for="nav-3-1-11">
+      propertybag
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-11">
+        propertybag
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/propertybag/propertybag-get/" title="propertybag get" class="md-nav__link">
+      propertybag get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/propertybag/propertybag-list/" title="propertybag list" class="md-nav__link">
+      propertybag list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-12" type="checkbox" id="nav-3-1-12">
+    
+    <label class="md-nav__link" for="nav-3-1-12">
       serviceprincipal
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-10">
+      <label class="md-nav__title" for="nav-3-1-12">
         serviceprincipal
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1090,13 +1243,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-11" type="checkbox" id="nav-3-1-11">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-13" type="checkbox" id="nav-3-1-13">
     
-    <label class="md-nav__link" for="nav-3-1-11">
+    <label class="md-nav__link" for="nav-3-1-13">
       site
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-11">
+      <label class="md-nav__title" for="nav-3-1-13">
         site
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1144,6 +1297,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-set/" title="site set" class="md-nav__link">
+      site set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/site/site-appcatalog-add/" title="site appcatalog add" class="md-nav__link">
       site appcatalog add
     </a>
@@ -1168,8 +1333,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-classic-add/" title="site classic add" class="md-nav__link">
+      site classic add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/site/site-classic-list/" title="site classic list" class="md-nav__link">
       site classic list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/site/site-classic-set/" title="site classic set" class="md-nav__link">
+      site classic set
     </a>
   </li>
 
@@ -1186,13 +1375,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-12" type="checkbox" id="nav-3-1-12">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-14" type="checkbox" id="nav-3-1-14">
     
-    <label class="md-nav__link" for="nav-3-1-12">
+    <label class="md-nav__link" for="nav-3-1-14">
       sitedesign
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-12">
+      <label class="md-nav__title" for="nav-3-1-14">
         sitedesign
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1252,6 +1441,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cmd/spo/sitedesign/sitedesign-set/" title="sitedesign set" class="md-nav__link">
+      sitedesign set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../cmd/spo/sitedesign/sitedesign-rights-grant/" title="sitedesign rights grant" class="md-nav__link">
       sitedesign rights grant
     </a>
@@ -1294,13 +1495,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-13" type="checkbox" id="nav-3-1-13">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-15" type="checkbox" id="nav-3-1-15">
     
-    <label class="md-nav__link" for="nav-3-1-13">
+    <label class="md-nav__link" for="nav-3-1-15">
       sitescript
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-13">
+      <label class="md-nav__title" for="nav-3-1-15">
         sitescript
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1378,13 +1579,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-14" type="checkbox" id="nav-3-1-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-16" type="checkbox" id="nav-3-1-16">
     
-    <label class="md-nav__link" for="nav-3-1-14">
+    <label class="md-nav__link" for="nav-3-1-16">
       storageentity
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-1-14">
+      <label class="md-nav__title" for="nav-3-1-16">
         storageentity
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1443,6 +1644,102 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-17" type="checkbox" id="nav-3-1-17">
+    
+    <label class="md-nav__link" for="nav-3-1-17">
+      tenant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-17">
+        tenant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/tenant/tenant-appcatalogurl-get/" title="tenant appcatalogurl get" class="md-nav__link">
+      tenant appcatalogurl get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-18" type="checkbox" id="nav-3-1-18">
+    
+    <label class="md-nav__link" for="nav-3-1-18">
+      web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-18">
+        web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/web/web-add/" title="web add" class="md-nav__link">
+      web add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/web/web-list/" title="web list" class="md-nav__link">
+      web list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/spo/web/web-remove/" title="web remove" class="md-nav__link">
+      web remove
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1458,10 +1755,142 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
     
     <label class="md-nav__link" for="nav-3-2">
-      Azure Active Directory Graph (aad)
+      Microsoft Graph (graph)
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-3-2">
+        Microsoft Graph (graph)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/connect/" title="connect" class="md-nav__link">
+      connect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/disconnect/" title="disconnect" class="md-nav__link">
+      disconnect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/status/" title="status" class="md-nav__link">
+      status
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
+    
+    <label class="md-nav__link" for="nav-3-2-4">
+      o365group
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-4">
+        o365group
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-add/" title="o365group add" class="md-nav__link">
+      o365group add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-get/" title="o365group get" class="md-nav__link">
+      o365group get
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-list/" title="o365group list" class="md-nav__link">
+      o365group list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cmd/graph/o365group/o365group-set/" title="o365group set" class="md-nav__link">
+      o365group set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Azure Active Directory Graph (aad)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
         Azure Active Directory Graph (aad)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1510,13 +1939,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-4" type="checkbox" id="nav-3-3-4">
     
-    <label class="md-nav__link" for="nav-3-2-4">
+    <label class="md-nav__link" for="nav-3-3-4">
       oauth2grant
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-4">
+      <label class="md-nav__title" for="nav-3-3-4">
         oauth2grant
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1582,13 +2011,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-5" type="checkbox" id="nav-3-2-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-5" type="checkbox" id="nav-3-3-5">
     
-    <label class="md-nav__link" for="nav-3-2-5">
+    <label class="md-nav__link" for="nav-3-3-5">
       service principal (sp)
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-5">
+      <label class="md-nav__title" for="nav-3-3-5">
         service principal (sp)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1823,6 +2252,11 @@
 <td></td>
 </tr>
 <tr>
+<td>Add-SPOHubSiteAssociation</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/hubsite/hubsite-connect/">spo hubsite connect</a></td>
+</tr>
+<tr>
 <td>Add-SPOSiteCollectionAppCatalog</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td><a href="../../cmd/spo/site/site-appcatalog-add/">spo site appcatalog add</a></td>
@@ -1858,11 +2292,6 @@
 <td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-permissionrequest-approve/">spo serviceprincipal permissionrequest approve</a></td>
 </tr>
 <tr>
-<td>Connect-SPOHubSite</td>
-<td>Microsoft.Online.SharePoint.PowerShell</td>
-<td><a href="../../cmd/spo/hubsite/hubsite-connect/">spo hubsite connect</a></td>
-</tr>
-<tr>
 <td>Connect-SPOService</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td><a href="../../cmd/spo/connect/">spo connect</a></td>
@@ -1886,11 +2315,6 @@
 <td>Disable-SPOTenantServicePrincipal</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td><a href="../../cmd/spo/serviceprincipal/serviceprincipal-set/">spo serviceprincipal set</a></td>
-</tr>
-<tr>
-<td>Disconnect-SPOHubSite</td>
-<td>Microsoft.Online.SharePoint.PowerShell</td>
-<td><a href="../../cmd/spo/hubsite/hubsite-disconnect/">spo hubsite disconnect</a></td>
 </tr>
 <tr>
 <td>Disconnect-SPOService</td>
@@ -1949,11 +2373,6 @@
 </tr>
 <tr>
 <td>Get-SPOGeoAdministrator</td>
-<td>Microsoft.Online.SharePoint.PowerShell</td>
-<td></td>
-</tr>
-<tr>
-<td>Get-SPOGeoMoveCompatibilityStatus</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td></td>
 </tr>
@@ -2138,6 +2557,11 @@
 <td></td>
 </tr>
 <tr>
+<td>Invoke-SPOSiteDesign</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
 <td>New-SPOMigrationEncryptionParameters</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td></td>
@@ -2160,7 +2584,7 @@
 <tr>
 <td>New-SPOSite</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
-<td><a href="../../cmd/spo/site/site-add/">spo site add</a></td>
+<td><a href="../../cmd/spo/site/site-classic-add/">spo site classic add</a></td>
 </tr>
 <tr>
 <td>New-SPOSiteGroup</td>
@@ -2191,6 +2615,11 @@
 <td>Remove-SPOGeoAdministrator</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td></td>
+</tr>
+<tr>
+<td>Remove-SPOHubSiteAssociation</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/hubsite/hubsite-disconnect/">spo hubsite disconnect</a></td>
 </tr>
 <tr>
 <td>Remove-SPOMigrationJob</td>
@@ -2353,6 +2782,11 @@
 <td></td>
 </tr>
 <tr>
+<td>Set-SPOSiteDesign</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td><a href="../../cmd/spo/sitedesign/sitedesign-set/">spo sitedesign set</a></td>
+</tr>
+<tr>
 <td>Set-SPOSiteGroup</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td></td>
@@ -2408,6 +2842,11 @@
 <td></td>
 </tr>
 <tr>
+<td>Set-SPOWebTheme</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
 <td>Start-SPOSiteContentMove</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td></td>
@@ -2439,6 +2878,11 @@
 </tr>
 <tr>
 <td>Update-SPODataEncryptionPolicy</td>
+<td>Microsoft.Online.SharePoint.PowerShell</td>
+<td></td>
+</tr>
+<tr>
+<td>Update-UserType</td>
 <td>Microsoft.Online.SharePoint.PowerShell</td>
 <td></td>
 </tr>
@@ -2885,7 +3329,7 @@
 <tr>
 <td>Get-PnPFile</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/file/file-list/">spo file list</a></td>
 </tr>
 <tr>
 <td>Get-PnPFolder</td>
@@ -2955,7 +3399,7 @@
 <tr>
 <td>Get-PnPPropertyBag</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/propertybag/propertybag-get/">spo propertybag get</a>, <a href="../../cmd/spo/propertybag/propertybag-list/">spo propertybag list</a></td>
 </tr>
 <tr>
 <td>Get-PnPProvisioningTemplate</td>
@@ -3065,7 +3509,7 @@
 <tr>
 <td>Get-PnPTenantAppCatalogUrl</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/tenant/tenant-appcatalogurl-get/">spo tenant appcatalogurl get</a></td>
 </tr>
 <tr>
 <td>Get-PnPTenantRecycleBinItem</td>
@@ -3105,7 +3549,7 @@
 <tr>
 <td>Get-PnPUnifiedGroup</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/graph/o365group/o365group-get/">graph o365group get</a>, <a href="../../cmd/graph/o365group/o365group-list/">graph o365group list</a></td>
 </tr>
 <tr>
 <td>Get-PnPUnifiedGroupMembers</td>
@@ -3135,7 +3579,7 @@
 <tr>
 <td>Get-PnPWeb</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/web/web-list/">spo web list</a></td>
 </tr>
 <tr>
 <td>Get-PnPWebhookSubscriptions</td>
@@ -3285,7 +3729,7 @@
 <tr>
 <td>New-PnPList</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/list/list-add/">spo list add</a></td>
 </tr>
 <tr>
 <td>New-PnPPersonalSite</td>
@@ -3310,7 +3754,7 @@
 <tr>
 <td>New-PnPTenantSite</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/site/site-classic-add/">spo site classic add</a></td>
 </tr>
 <tr>
 <td>New-PnPTerm</td>
@@ -3330,7 +3774,7 @@
 <tr>
 <td>New-PnPUnifiedGroup</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/graph/o365group/o365group-add/">graph o365group add</a></td>
 </tr>
 <tr>
 <td>New-PnPUser</td>
@@ -3340,7 +3784,7 @@
 <tr>
 <td>New-PnPWeb</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/web/web-add/">spo web add</a></td>
 </tr>
 <tr>
 <td>Publish-PnPApp</td>
@@ -3430,7 +3874,7 @@
 <tr>
 <td>Remove-PnPList</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/list/list-remove/">spo list remove</a></td>
 </tr>
 <tr>
 <td>Remove-PnPListItem</td>
@@ -3515,7 +3959,7 @@
 <tr>
 <td>Remove-PnPWeb</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/web/web-remove/">spo web remove</a></td>
 </tr>
 <tr>
 <td>Remove-PnPWebhookSubscription</td>
@@ -3690,7 +4134,7 @@
 <tr>
 <td>Set-PnPList</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/list/list-set/">spo list set</a></td>
 </tr>
 <tr>
 <td>Set-PnPListItem</td>
@@ -3745,7 +4189,7 @@
 <tr>
 <td>Set-PnPSite</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/site/site-set/">spo site set</a></td>
 </tr>
 <tr>
 <td>Set-PnPSiteClosure</td>
@@ -3753,9 +4197,19 @@
 <td></td>
 </tr>
 <tr>
+<td>Set-PnPSiteDesign</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/sitedesign/sitedesign-set/">spo sitedesign set</a></td>
+</tr>
+<tr>
 <td>Set-PnPSitePolicy</td>
 <td>SharePointPnPPowerShellOnline</td>
 <td></td>
+</tr>
+<tr>
+<td>Set-PnPSiteScript</td>
+<td>SharePointPnPPowerShellOnline</td>
+<td><a href="../../cmd/spo/sitescript/sitescript-set/">spo sitescript set</a></td>
 </tr>
 <tr>
 <td>Set-PnPStorageEntity</td>
@@ -3770,7 +4224,7 @@
 <tr>
 <td>Set-PnPTenantSite</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/spo/site/site-classic-set/">spo site classic set</a></td>
 </tr>
 <tr>
 <td>Set-PnPTheme</td>
@@ -3785,7 +4239,7 @@
 <tr>
 <td>Set-PnPUnifiedGroup</td>
 <td>SharePointPnPPowerShellOnline</td>
-<td></td>
+<td><a href="../../cmd/graph/o365group/o365group-set/">graph o365group set</a></td>
 </tr>
 <tr>
 <td>Set-PnPUserProfileProperty</td>
@@ -3955,7 +4409,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.f041762f.js"></script>
+      <script src="../../assets/javascripts/application.02434462.js"></script>
       
       <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
