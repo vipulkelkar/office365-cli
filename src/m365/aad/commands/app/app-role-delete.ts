@@ -80,7 +80,7 @@ class AadAppRoleDeleteCommand extends GraphCommand {
         const appRoleDeleteIdentifierProperty = args.options.name ? `displayName` : (args.options.claim ? `value`:`id`) ;
         const appRoleDeleteIdentifierValue = args.options.name ? args.options.name : (args.options.claim ? args.options.claim:args.options.id) ;
       
-        const appRoleToDelete:AppRole[] = aadApp.appRoles!.filter(role => role[appRoleDeleteIdentifierProperty] === appRoleDeleteIdentifierValue);
+        const appRoleToDelete:AppRole[] = aadApp.appRoles!.filter((role:AppRole) => role[appRoleDeleteIdentifierProperty] === appRoleDeleteIdentifierValue);
 
         if(args.options.name && 
           appRoleToDelete !== undefined && 
@@ -88,13 +88,12 @@ class AadAppRoleDeleteCommand extends GraphCommand {
           return Promise.reject(`Multiple roles with the provided 'name' were found. Please disambiguate using the claims : ${appRoleToDelete.map(role => `${role.value}`).join(', ')}`);
           
         }
-
         if(appRoleToDelete.length === 0){
           return Promise.reject(`No app role with ${appRoleDeleteIdentifierNameValue} found.`);
         }
           
         const roleToDelete:AppRole = appRoleToDelete[0];
-
+        
         if(roleToDelete.isEnabled){
           return this.disableAppRole(logger,aadApp,roleToDelete.id!).then(() =>{
             return this.deleteAppRole(logger,aadApp,roleToDelete.id!);
@@ -109,7 +108,7 @@ class AadAppRoleDeleteCommand extends GraphCommand {
 
   private disableAppRole(logger:Logger,aadApp:Application,roleId:string):Promise<void>{
 
-    const roleIndex = aadApp.appRoles!.findIndex(role => role.id === roleId);
+    const roleIndex = aadApp.appRoles!.findIndex((role:AppRole) => role.id === roleId);
 
     if(this.verbose){
       logger.logToStderr(`Disabling the app role`);
@@ -137,8 +136,7 @@ class AadAppRoleDeleteCommand extends GraphCommand {
       logger.logToStderr(`Deleting the app role.`);
     }
 
-    const updatedAppRoles = aadApp.appRoles!.filter(role => role.id !== roleId);
-
+    const updatedAppRoles = aadApp.appRoles!.filter((role:AppRole) => role.id !== roleId);
     const requestOptions: any = {
       url: `${this.resource}/v1.0/myorganization/applications/${aadApp.id}`,
       headers: {
@@ -149,7 +147,7 @@ class AadAppRoleDeleteCommand extends GraphCommand {
         appRoles: updatedAppRoles
       }
     };
-    
+
     return request.patch(requestOptions);
   }
 
