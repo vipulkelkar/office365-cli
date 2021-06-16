@@ -1303,6 +1303,147 @@ describe(commands.APP_ROLE_DELETE, () => {
     });
   });
 
+  it('handles when no roles with the specified name are found and --confirm option specified', (done) => {
+
+    const getRequestStub = sinon.stub(request, 'get');
+
+    getRequestStub.onFirstCall().callsFake(opts => {
+      if (opts.url === `https://graph.microsoft.com/v1.0/myorganization/applications?$filter=displayName eq 'App-Name'&$select=id`) {
+        return Promise.resolve({
+          "value":[
+            {
+              id: '5b31c38c-2584-42f0-aa47-657fb3a84230'
+            }
+          ]
+        });
+      }
+
+      return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
+    });
+
+    getRequestStub.onSecondCall().callsFake(opts => {
+      if (opts.url === 'https://graph.microsoft.com/v1.0/myorganization/applications/5b31c38c-2584-42f0-aa47-657fb3a84230?$select=id,appRoles') {
+        return Promise.resolve({
+          id: '5b31c38c-2584-42f0-aa47-657fb3a84230',
+          appRoles: []
+        });
+      }
+
+      return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
+    });
+
+    command.action(logger, {
+      options: {
+        debug: false,
+        appName: 'App-Name',
+        name: 'ProductRead',
+        confirm:true
+      }
+    }, (err?: any) => {
+      try {
+        assert.strictEqual(err.message, `No app role with name 'ProductRead' found.`);
+        done();
+      }
+      catch (e) {
+        done(e);
+      }
+    });
+  });
+
+  it('handles when no roles with the specified claim are found and --confirm option specified', (done) => {
+
+    const getRequestStub = sinon.stub(request, 'get');
+
+    getRequestStub.onFirstCall().callsFake(opts => {
+      if (opts.url === `https://graph.microsoft.com/v1.0/myorganization/applications?$filter=displayName eq 'App-Name'&$select=id`) {
+        return Promise.resolve({
+          "value":[
+            {
+              id: '5b31c38c-2584-42f0-aa47-657fb3a84230'
+            }
+          ]
+        });
+      }
+
+      return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
+    });
+
+    getRequestStub.onSecondCall().callsFake(opts => {
+      if (opts.url === 'https://graph.microsoft.com/v1.0/myorganization/applications/5b31c38c-2584-42f0-aa47-657fb3a84230?$select=id,appRoles') {
+        return Promise.resolve({
+          id: '5b31c38c-2584-42f0-aa47-657fb3a84230',
+          appRoles: []
+        });
+      }
+
+      return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
+    });
+
+    command.action(logger, {
+      options: {
+        debug: false,
+        appName: 'App-Name',
+        claim: 'Product.Read',
+        confirm:true
+      }
+    }, (err?: any) => {
+      try {
+        assert.strictEqual(err.message, `No app role with claim 'Product.Read' found.`);
+        done();
+      }
+      catch (e) {
+        done(e);
+      }
+    });
+  });
+
+  it('handles when no roles with the specified id are found and --confirm option specified', (done) => {
+
+    const getRequestStub = sinon.stub(request, 'get');
+
+    getRequestStub.onFirstCall().callsFake(opts => {
+      if (opts.url === `https://graph.microsoft.com/v1.0/myorganization/applications?$filter=displayName eq 'App-Name'&$select=id`) {
+        return Promise.resolve({
+          "value":[
+            {
+              id: '5b31c38c-2584-42f0-aa47-657fb3a84230'
+            }
+          ]
+        });
+      }
+
+      return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
+    });
+
+    getRequestStub.onSecondCall().callsFake(opts => {
+      if (opts.url === 'https://graph.microsoft.com/v1.0/myorganization/applications/5b31c38c-2584-42f0-aa47-657fb3a84230?$select=id,appRoles') {
+        return Promise.resolve({
+          id: '5b31c38c-2584-42f0-aa47-657fb3a84230',
+          appRoles: []
+        });
+      }
+
+      return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
+    });
+
+    command.action(logger, {
+      options: {
+        debug: false,
+        appName: 'App-Name',
+        id: 'c4352a0a-494f-46f9-b843-479855c173a7',
+        confirm:true
+      }
+    }, (err?: any) => {
+      try {
+        assert.strictEqual(err.message, `No app role with id 'c4352a0a-494f-46f9-b843-479855c173a7' found.`);
+        done();
+      }
+      catch (e) {
+        done(e);
+      }
+    });
+  });
+
   it('prompts before removing the specified app role when confirm option not passed', (done) => {
     command.action(logger, { options: { debug: false, appName: 'App-Name',claim:'Product.Read' } }, () => {
       let promptIssued = false;
@@ -1313,6 +1454,24 @@ describe(commands.APP_ROLE_DELETE, () => {
 
       try {
         assert(promptIssued);
+        done();
+      }
+      catch (e) {
+        done(e);
+      }
+    });
+  });
+
+  it('aborts deleting app role when prompt is not confirmed', (done) => {
+    // represents the aad app get request called when the prompt is confirmed
+    const patchStub = sinon.stub(request,'get');
+    Utils.restore(Cli.prompt);
+    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
+      cb({ continue: false });
+    });
+    command.action(logger, { options: { debug: false, appName: 'App-Name',claim:'Product.Read' } }, () => {
+      try {
+        assert(patchStub.notCalled);
         done();
       }
       catch (e) {
@@ -1412,7 +1571,6 @@ describe(commands.APP_ROLE_DELETE, () => {
     });
   });
 
-
   it('fails validation if appId and appObjectId specified', () => {
     const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f', appObjectId: 'c75be2e1-0204-4f95-857d-51a37cf40be8' } });
     assert.notStrictEqual(actual, true);
@@ -1433,6 +1591,30 @@ describe(commands.APP_ROLE_DELETE, () => {
     assert.notStrictEqual(actual, true);
   });
 
+  it('fails validation if role name and id is specified', () => {
+    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f',name:"Product read",id:"c4352a0a-494f-46f9-b843-479855c173a7"} });
+    assert.notStrictEqual(actual, true);
+  });
+
+  it('fails validation role name and claim is specified', () => {
+    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f',name:"Product read",claim:"Product.Read"} });
+    assert.notStrictEqual(actual, true);
+  });
+
+  it('fails validation if role id and claim is specified', () => {
+    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f',claim:"Product.Read",id:"c4352a0a-494f-46f9-b843-479855c173a7"} });
+    assert.notStrictEqual(actual, true);
+  });
+
+  it('fails validation if neither role name, id or claim specified', () => {
+    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f'} });
+    assert.notStrictEqual(actual, true);
+  });
+
+  it('fails validation if specified role id is not a valid guid', () => {
+    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f',id:'77355bee'} });
+    assert.notStrictEqual(actual, true);
+  });
 
   it('passes validation if required options specified - appId,name', () => {
     const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f', name: 'ProductRead' } });
@@ -1445,7 +1627,7 @@ describe(commands.APP_ROLE_DELETE, () => {
   });
 
   it('passes validation if required options specified - appId,id', () => {
-    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f', id: '1c5n1e42-794b-4c71-93ac-5ed92488b67f' } });
+    const actual = command.validate({ options: { appId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f', id: '4e241a08-3a95-4c47-8c68-8c0df7d62ce2' } });
     assert.strictEqual(actual, true);
   });
 
@@ -1459,8 +1641,8 @@ describe(commands.APP_ROLE_DELETE, () => {
     assert.strictEqual(actual, true);
   });
 
-  it('passes validation if required options specified - appId,id', () => {
-    const actual = command.validate({ options: { appObjectId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f', id: '1c5n1e42-794b-4c71-93ac-5ed92488b67f' } });
+  it('passes validation if required options specified - appObjectId,id', () => {
+    const actual = command.validate({ options: { appObjectId: '9b1b1e42-794b-4c71-93ac-5ed92488b67f', id: '4e241a08-3a95-4c47-8c68-8c0df7d62ce2' } });
     assert.strictEqual(actual, true);
   });
 
@@ -1475,7 +1657,7 @@ describe(commands.APP_ROLE_DELETE, () => {
   });
 
   it('passes validation if required options specified - appName,id', () => {
-    const actual = command.validate({ options: { appName: 'My App', id: '1c5n1e42-794b-4c71-93ac-5ed92488b67f' } });
+    const actual = command.validate({ options: { appName: 'My App', id: '4e241a08-3a95-4c47-8c68-8c0df7d62ce2' } });
     assert.strictEqual(actual, true);
   });
 

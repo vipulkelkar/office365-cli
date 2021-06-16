@@ -7,6 +7,7 @@ import request from '../../../../request';
 import GraphCommand from '../../../base/GraphCommand';
 import commands from '../../commands';
 import {Application, AppRole} from "@microsoft/microsoft-graph-types";
+import Utils from '../../../../Utils';
 
 interface CommandArgs {
   options: Options;
@@ -36,6 +37,9 @@ class AadAppRoleDeleteCommand extends GraphCommand {
     telemetryProps.appId = typeof args.options.appId !== 'undefined';
     telemetryProps.appObjectId = typeof args.options.appObjectId !== 'undefined';
     telemetryProps.appName = typeof args.options.appName !== 'undefined';
+    telemetryProps.claim = typeof args.options.claim !== 'undefined';
+    telemetryProps.name = typeof args.options.name !== 'undefined';
+    telemetryProps.id = typeof args.options.id !== 'undefined';
     return telemetryProps;
   }
 
@@ -246,6 +250,12 @@ class AadAppRoleDeleteCommand extends GraphCommand {
       !claim && 
       !id) {
       return `Specify either name, claim or id of the role`;
+    }
+
+    if (args.options.id) {
+      if (!Utils.isValidGuid(args.options.id)) {
+        return `${args.options.id} is not a valid GUID`;
+      }
     }
 
     return true;
