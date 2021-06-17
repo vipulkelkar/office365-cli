@@ -2026,7 +2026,15 @@ describe(commands.APP_ROLE_DELETE, () => {
   });
 
   it('deletes an app role when the role is in enabled state and valid appObjectId, role claim and the prompt is confirmed (debug)', (done) => {
-    sinon.stub(request, 'get').callsFake(opts => {
+
+    Utils.restore(Cli.prompt);
+    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
+      cb({ continue: true });
+    });
+
+    const getRequestStub = sinon.stub(request, 'get');
+
+    getRequestStub.callsFake(opts => {
       if (opts.url === 'https://graph.microsoft.com/v1.0/myorganization/applications/5b31c38c-2584-42f0-aa47-657fb3a84230?$select=id,appRoles') {
         return Promise.resolve({
           id: '5b31c38c-2584-42f0-aa47-657fb3a84230',
@@ -2090,17 +2098,12 @@ describe(commands.APP_ROLE_DELETE, () => {
       return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
     });
 
-    Utils.restore(Cli.prompt);
-    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
-      cb({ continue: true });
-    });
-
     command.action(logger, {
       options: {
         debug: true,
         appObjectId: '5b31c38c-2584-42f0-aa47-657fb3a84230',
         claim: 'Product.Read',
-        confirm:true
+        confirm:false
       }
     }, (err?: any) => {
       try {
@@ -2115,6 +2118,11 @@ describe(commands.APP_ROLE_DELETE, () => {
 
   it('deletes an app role when the role is in enabled state and valid appId, role name and prompt is confirmed', (done) => {
 
+    Utils.restore(Cli.prompt);
+    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
+      cb({ continue: true });
+    });
+
     const getRequestStub = sinon.stub(request, 'get');
 
     getRequestStub.onFirstCall().callsFake(opts => {
@@ -2195,17 +2203,12 @@ describe(commands.APP_ROLE_DELETE, () => {
       return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
     });
 
-    Utils.restore(Cli.prompt);
-    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
-      cb({ continue: true });
-    });
-
     command.action(logger, {
       options: {
         debug: false,
         appId: '53788d97-dc06-460c-8bd6-5cfbc7e3b0f7',
         name: 'ProductRead',
-        confirm:true
+        confirm:false
       }
     }, (err?: any) => {
       try {
@@ -2220,6 +2223,11 @@ describe(commands.APP_ROLE_DELETE, () => {
 
   it('deletes an app role when the role is in enabled state and valid appId, role id and prompt is confirmed (debug)', (done) => {
 
+    Utils.restore(Cli.prompt);
+    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
+      cb({ continue: true });
+    });
+
     const getRequestStub = sinon.stub(request, 'get');
 
     getRequestStub.onFirstCall().callsFake(opts => {
@@ -2298,17 +2306,13 @@ describe(commands.APP_ROLE_DELETE, () => {
       return Promise.reject(`Invalid request ${JSON.stringify(opts)}`);
     });
 
-    Utils.restore(Cli.prompt);
-    sinon.stub(Cli, 'prompt').callsFake((options: any, cb: (result: { continue: boolean }) => void) => {
-      cb({ continue: true });
-    });
 
     command.action(logger, {
       options: {
         debug: true,
         appId: '53788d97-dc06-460c-8bd6-5cfbc7e3b0f7',
         id: 'c4352a0a-494f-46f9-b843-479855c173a7',
-        confirm:true
+        confirm:false
       }
     }, (err?: any) => {
       try {
